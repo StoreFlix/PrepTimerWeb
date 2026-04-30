@@ -1,0 +1,6 @@
+<div class="ontainer-fluid padding-rem">
+  <nav class="breadcrumb"><i class="fa fa-dashboard"></i>
+    <a class="breadcrumb-item" [routerLink]="['/registration/mysubscriptions']">Home</a>
+    <a class="breadcrumb-item active" [routerLink]="route.routeUrl" *ngFor="let route of routeNames">{{route.name}}</a>
+  </nav>
+</div>

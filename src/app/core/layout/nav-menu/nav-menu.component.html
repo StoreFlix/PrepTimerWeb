@@ -1,0 +1,81 @@
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    
+    <a class="navbar-brand"> 
+      <img class="navbar-brand img tempImg" [src]="headerData?.companyLogo" onError="this.src='assets/Images/antunes-digital-brand.png'">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse col" id="navbarSupportedContent" >
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" [ngClass]="menu?.subMenus?.length > 0 ? 'dropdown' : ''" *ngFor= "let menu of menuList">
+            <ng-template [ngIf]="menu?.subMenus?.length > 0" [ngIfElse]="nosubmenu">
+              <a class="nav-link dropdown-toggle" [href]="menu.menuURL" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                {{menu.displayName}}</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" [href]="submenu.menuURL" *ngFor="let submenu of menu.subMenus">{{submenu.displayName}}</a>
+              </div>
+            </ng-template>
+            <ng-template #nosubmenu>
+              <a class="nav-link" [href]="menu.menuURL" *ngIf="menu.menuName != 'Support'">{{menu.displayName}} </a>
+            </ng-template>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown" >
+            
+              <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Administration
+               </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" routerLink="/preptimer/users">User Management</a>
+                <!-- <a class="dropdown-item">Device Management</a> -->
+                <a class="dropdown-item" routerLink="/preptimer/translations">Translations</a>
+              </div>
+                     
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown" >
+            
+              <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Prep Timer
+               </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" routerLink="/preptimer/categories">Categories</a>
+                <a class="dropdown-item" routerLink="/preptimer/condiments">Items</a>
+              </div>
+                     
+        </li>
+      </ul>
+
+
+    </div>
+    <div class="form-inline my-2 my-lg-0 col-md-2 avatarnav ">
+      <ul class="nav navbar-nav navbar-right ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle avatar dropdown-toggle-avatar" data-bs-toggle="dropdown">
+            <div class="rounded-circle avatar-text bg3"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
+          </a>
+        <ul class="dropdown-menu shadow">
+          <div class="">
+            <li class="dropdown-header"><label class="d-block" style="white-space: normal;">Admin</label><!-- {{headerData.userLastName}} -->
+           </li>
+            <div class="dropdown-divider"></div>
+            <li   class="dropdown-item"><a   [routerLink]="['/registration/mysubscriptions']" style="text-decoration: none;">My Subscription</a></li>
+            <div class="dropdown-divider"></div>
+            <li   class="dropdown-item"><a (click)="logout()">Sign Out</a></li>
+          </div>
+         </ul>
+      </li>
+    </ul>
+  </div>
+  
+  </nav>
+</header>
+  

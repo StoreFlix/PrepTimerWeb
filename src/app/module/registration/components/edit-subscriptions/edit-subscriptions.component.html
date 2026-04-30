@@ -1,0 +1,67 @@
+
+<!-- Login -->
+<div *ngIf="reponseloading" class="loader">
+    <img src="assets/Images/loader.gif" />
+    <span class="loading-message">Please wait...</span>
+</div>
+
+<div class="create-h reg-create-container box-customer-register reg-user-checkout">
+    <div class="container">
+    <div class="row sinup corporate-signup pt-3" >
+        <div class="col-md-12 ">
+            <div class="box1 box1-white">
+        
+                <div class="row ">
+                    <div class="col-md-12 col-sm-11 mx-auto">
+                        <h3 class="text-theme-color mb-2" *ngIf="currentStep ==1">Step 1 : Subscriptions</h3>
+                        <h3 class="text-theme-color mb-2" *ngIf="currentStep ==2">Step 2 : Billing Address</h3>
+                        <h3 class="text-theme-color mb-2" *ngIf="currentStep ==3">Step 3 : Payment</h3>
+                        <ul class="label-prep-progress d-flex mb-5 w-100">
+                            <li class="flex-fill " [ngClass]="{'active':currentStep >=1  }"></li>
+                            <li class="flex-fill" [ngClass]="{'active':currentStep >=2 }"></li>
+                            <li class="flex-fill" [ngClass]="{'active':currentStep >=3 }"></li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="row" *ngIf="currentStep ==1">
+                    <subscription-details class="w-100" #subscription (formSubmitted)="step4Completed($event)">
+                    </subscription-details>
+                </div>
+
+                <div class="row" *ngIf="currentStep ==2">
+                    <billing-address  #billingAddressForm  (formSubmitted)="step5Completed($event)">
+                    </billing-address>
+                </div>
+                
+                <div class="row" *ngIf="currentStep ==3">
+                    <subscription-checkout #checkout [subscDetails]="selectedSubscriptionDetails">
+                    </subscription-checkout>
+                </div>
+
+                <div class="row box-btn-register">
+                    <div class="col-md-12 text-right">
+                        <form name="form" novalidate>
+                            <div class="text-right ">
+                                <button type="submit" class="btn btn-secondary-custom me-3 width-100"
+                                    [ngClass]="{'d-none': currentStep < 2 }" (click)="gotoPrevStep()">BACK</button>
+                                <button type="submit" class="btn btn-primary-custom width-100 me-3"
+                                    [ngClass]="{'d-none': currentStep > 2 }" (click)="onSubmit()">NEXT</button>
+                                <button type="submit" class="btn btn-primary-custom me-3"
+                                    [ngClass]="{'d-none': currentStep != 3 }" (click)="onSubmit()">CONFIRM</button>
+                            </div>
+                        </form>
+        
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+    
+
+
+

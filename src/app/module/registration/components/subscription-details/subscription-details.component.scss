@@ -1,0 +1,48 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.device-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.device-counter {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.device-counter .btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background-color: #7CACD1;
+}
+
+.pricing-card-input {
+  width: 64px;
+  padding: .45rem .5rem;
+  border-left: none;
+  border-right: none;
+}
+
+.card.active {
+  border: 2px solid #1A3668;
+  box-shadow: 0 8px 20px rgba(26,54,104,0.07);
+}

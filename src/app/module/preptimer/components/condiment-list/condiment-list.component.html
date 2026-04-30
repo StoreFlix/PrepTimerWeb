@@ -1,0 +1,221 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<div class="container mt-4">
+   
+   
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <!-- Title + Subtext -->
+        <div>
+            <h4 class="page-title mb-1" style="color:#1A3668; font-size:1.5rem; font-weight:500;">
+                Item Management
+            </h4>
+            <p class="page-subtext text-muted mb-0" style="font-size:0.8rem;">
+                Manage default and custom items used in Prep Timer
+            </p>
+        </div>
+    
+        <!-- Add Item Button -->
+        <div>
+            <button class="btn add-btn" style="background-color:#1A3668; color:white;"
+                routerLink="/preptimer/condiments/add">
+                <i class="fas fa-plus"></i> Add Item
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Default Items Section -->
+        <div class="col-md-6">
+            <div class="border rounded p-3">
+                <h4 class="mb-3" style="color: #1A3668;">Default Items</h4>
+
+                <div *ngIf="loading" class="d-flex justify-content-center align-items-center" style="height: 400px;">
+                    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;color: #1A3668;"    >
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div *ngIf="!loading" class="default-items" style="height: 400px; overflow-y: auto; scrollbar-width: thin;">
+                    <!-- <div class="item-card d-flex align-items-center p-3 border-bottom" style="background-color: #f9f9f9;">
+                        <div class="icon-box">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h5 class="mb-1 item-name">Item 1</h5>
+                            <small class="item-category">Category A</small>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="timer">5 min</span>
+                            <button class="btn btn-sm action-btn">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div> -->
+                    <ng-container *ngIf="items && items.length > 0; else noDefault">
+          <div *ngFor="let item of defaultItems" 
+               class="item-card d-flex align-items-center p-3 border-bottom" 
+               style="background-color: #f9f9f9;">
+            
+            <div class="icon-box" *ngIf="[1,2,3,4].includes(item.itemId)" style="background-color: black;" >
+              <img [src]="item.iconUrl" alt="Item Icon" width="40" height="40" />
+            </div>
+            <div class="icon-box" *ngIf="![1,2,3,4].includes(item.itemId)" >
+              <img [src]="item.iconUrl" alt="Item Icon" width="40" height="40" />
+            </div>
+            <div class="flex-grow-1">
+              <div class="mb-1 item-name">{{item.itemName}}</div>
+            </div>
+            <div class="d-flex align-items-center">
+              <span class="timer">{{formatDuration(item.duration)}}</span>
+              <button class="btn btn-sm action-btn" (click)="onEdit(item.itemId)">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #noDefault>
+          <div class="text-center text-muted mt-5">No Default Items</div>
+        </ng-template>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Items Section -->
+        <div class="col-md-6">
+            <div class="border rounded p-3">
+                <h4 class="mb-3" style="color: #1A3668;">Custom Items</h4>
+                <div class="custom-items" style="height: 400px; overflow-y: auto; scrollbar-width: thin;">
+                    <ng-container *ngIf="items.length > 0; else noCustomData">
+                    <div *ngFor="let item of customItems" class="item-card d-flex align-items-center p-3 border-bottom" style="background-color: #f9f9f9;">
+                        <div class="icon-box">
+                            <img [src]="item.iconUrl" alt="Item Icon" width="40" height="40" />
+                        </div>
+                        <div class="flex-grow-1">
+                            <h5 class="mb-1 item-name">{{item.itemName}}</h5>
+                            <!-- <small class="item-category">{{item.category.categoryName}}</small> -->
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="timer">{{formatDuration(item.duration)}}</span>
+                            <button class="btn btn-sm edit-btn" (click)="onEdit(item.itemId)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm delete-btn" (click)="deleteItem(item.itemId)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    </ng-container>
+                    <ng-template #noCustomData>
+                    <div class="text-center text-muted mt-5">
+                       No Custom Items
+                    </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-3 shadow-lg border-0">
+      <form (ngSubmit)="saveItem()" #itemForm="ngForm">
+
+        <!-- Header -->
+        <div class="modal-header" style="background-color:#1A3668; color:white; padding:0.6rem;">
+          <h5 class="modal-title" id="itemModalLabel">
+            {{ isEditMode ? 'Edit' : 'Add' }} Item
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body px-4 py-3">
+          <div class="row g-4">
+
+            <!-- 1. Icon -->
+            <div class="col-12">
+              <label for="iconUpload" class="form-label">Item Icon</label>
+              <input type="file" id="iconUpload" class="form-control"
+                     (change)="onIconFileChange($event)" />
+              <div *ngIf="itemModel.iconPreview" class="mt-2">
+                <img [src]="itemModel.iconPreview" alt="Preview"
+                     width="48" height="48" class="border rounded p-1" />
+              </div>
+            </div>
+
+            <!-- 2. Categories -->
+            <div class="col-12">
+              <label class="form-label">Categories</label>
+              <div class="row row-cols-3 g-2">
+                <div class="col" *ngFor="let cat of categories">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox"
+                           [id]="'cat-'+cat.categoryId"
+                           [checked]="itemModel.categoryIds.includes(cat.categoryId)"
+                           (change)="onCategoryToggle(cat.categoryId, $event)">
+                    <label class="form-check-label small text-muted" [for]="'cat-'+cat.categoryId">
+                      {{ cat.categoryName }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Translations -->
+            <div class="col-12">
+              <label class="form-label">Item Name (Translations)</label>
+              <ul class="nav nav-pills mb-2 small">
+                <li class="nav-item" *ngFor="let lang of translations; let i = index">
+                  <button class="nav-link py-1 px-2"
+                          [class.active]="i===0"
+                          data-bs-toggle="tab"
+                          [attr.data-bs-target]="'#lang-'+lang.code"
+                          type="button"
+                          style="font-size: 0.85rem;">
+                    {{ lang.name }}
+                  </button>
+                </li>
+              </ul>
+              <div class="tab-content border rounded p-2">
+                <div class="tab-pane fade"
+                     *ngFor="let lang of translations; let i = index"
+                     [class.show]="i===0" [class.active]="i===0"
+                     [id]="'lang-'+lang.code">
+                  <input type="text"
+                         [(ngModel)]="itemModel.translations[lang.code]"
+                         [name]="'name'+lang.code"
+                         class="form-control form-control-sm"
+                         [placeholder]="'Enter name in ' + lang.name" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Duration -->
+            <div class="col-12">
+              <label for="durationMinutes" class="form-label">Duration (Minutes)</label>
+              <input type="number" min="1"
+                     [(ngModel)]="itemModel.durationMinutes"
+                     name="durationMinutes"
+                     id="durationMinutes"
+                     class="form-control form-control-sm"
+                     placeholder="e.g. 70 for 1h 10m" />
+              <small class="text-muted">Enter duration in minutes only.</small>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer px-4 py-2">
+          <button type="submit" class="btn btn-sm text-white" style="background-color:#1A3668;">
+            <i class="fas fa-save me-1"></i> Save
+          </button>
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">
+            Cancel
+          </button>
+        </div>
+
+
+  

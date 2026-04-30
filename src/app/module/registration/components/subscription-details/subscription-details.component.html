@@ -1,0 +1,79 @@
+<div class="col-md-12 col-sm-11 mx-auto" name="subscriptionForm" >
+    
+        <div class="form-row">
+              <div class="accordion subscription-accordion w-100" id="accordionExample">
+
+                <div class="card active" *ngFor="let susb of subscriptionData; let i = index;" >
+                  <div class="card-header" [id]="'heading'+i">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left" [ngClass]="susb.selected ? '' : 'collapsed'" type="button" data-toggle="collapse"  aria-expanded="true" 
+                      [attr.aria-controls]="'collapse' + i" [attr.data-target]="'#collapse' + i">
+                        {{susb.productName}}
+                        <i class="fa fa-caret-up float-right" aria-hidden="true"></i>
+                      </button>
+                    </h2>
+                  </div>
+              
+                  <div [id]="'collapse' + i" class="collapse " [ngClass]="{ 'show': susb.selected }" [attr.aria-labelledby]="'heading' + i" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row justify-content-center row-cols-1 row-cols-md-3 row-cols-lg-4 text-center pricing-card-deck">
+                          <div class="col mb-2"  *ngFor="let plan of susb.plans;">
+                          <div class="card" [ngClass]="{'active':plan.isSelected}" style="background-color: whitesmoke;">
+                              <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">{{plan.planName}}</h4>
+                              </div>
+                              <div class="card-body">
+                                <div class="mb-3 justify-content-center">
+                                    <label style="margin-bottom: 10px;"><small>No. of Devices</small></label> 
+                                    
+                                    <!-- <input type="number" class="form-control m-auto pricing-card-input" [(ngModel)]="plan.quantity" /> -->
+                                
+                                    <div class="input-group m-auto input-group-sm device-counter" role="group" aria-label="Device counter">
+                                        <button type="button"
+                                                class="btn btn-outline-secondary btn-decrease"
+                                                (click)="decrease(plan)"
+                                                aria-label="Decrease devices">
+                                          <i class="fa fa-minus" style="color:white;opacity: 0.8;"></i>
+                                        </button>
+
+                                        <input type="text"
+                                              class="form-control text-center pricing-card-input  m-auto"
+                                              [value]="plan.quantity || 0"
+                                              readonly
+                                              aria-live="polite"
+                                              aria-label="Number of devices" 
+                                              style="border-color: #d2d4d6;"/>
+
+                                        <button type="button"
+                                                class="btn btn-outline-secondary btn-increase"
+                                                (click)="increase(plan)"
+                                                aria-label="Increase devices">
+                                          <i class="fa fa-plus" style="color:white;opacity: 0.8;"></i>
+                                        </button>
+                                </div>
+                                <div class="card-title pricing-card-title" style="margin-top: 10px;">
+                                  ${{plan.quantity * plan.actPrice}}
+                                  <small class="text-muted">/ year</small>
+                                </div>
+                                <ul class="list-unstyled mb-2">
+                                    <li><small>{{plan.planDescription}}</small></li>
+                                </ul>
+                               <!-- <div class="custom-control-radio custom-radio btn subscription-custom-btn">
+                                    <input type="radio" id="{{plan.planName+ i}}"  class="custom-control-input" name="{{susb.productName}}" 
+                                      (change)="subscriptionSelected(susb,plan.planId)" >
+                                    <label class="custom-control-label" for="{{plan.planName + i}}" >Subscribe</label>
+                                  </div>  -->
+                                  <!-- <button  (click)="subscriptionSelected(susb,plan,plan.isSelected)"  type="submit" class="btn btn-block btn-secondary-custom">Subscribe</button> -->
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+             
+        </div>
+   
+</div>

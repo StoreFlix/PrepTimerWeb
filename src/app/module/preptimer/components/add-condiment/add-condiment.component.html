@@ -1,0 +1,106 @@
+<div class="container mt-2">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg rounded-3">
+        
+        <!-- Header -->
+        <div class="card-header text-center" style="background-color: #1a3668; color: white">
+          <h4 class="mb-0" style="color:white !important">
+            {{ isEditMode ? 'Edit Item' : 'New Item' }}
+          </h4>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body">
+          <form [formGroup]="itemForm" *ngIf="itemForm">
+
+            <!-- 1. Icon Upload -->
+            <div class="mb-3">
+                <label class="form-label">Item Icon:</label>
+                <div class="d-flex align-items-center">
+                    <!-- File Input -->
+                    <input type="file" class="form-control me-3" 
+                        (change)="onIconFileChange($event)" />
+
+                    <!-- Preview -->
+                    <div *ngIf="iconPreview">
+                    <img [src]="iconPreview" alt="Icon Preview" 
+                        class="border rounded" width="50" height="50" />
+                    </div>
+                </div>
+
+  <!-- Validation -->
+  <div *ngIf="itemForm.get('icon')?.touched && itemForm.get('icon')?.invalid" class="text-danger mt-1">
+    Please select an icon.
+  </div>
+</div>
+
+            <div class="mb-3">
+              <label class="form-label">Categories:</label>
+              <div class="dropdown w-100">
+                <button class="btn btn-outline-secondary w-100 text-start dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  {{ selectedCategories.length > 0 ? (selectedCategories.length + ' selected') : 'Select Categories' }}
+                </button>
+                <ul class="dropdown-menu w-100" style="padding-left: 1.5rem !important;">
+                  <li *ngFor="let cat of categories" class="form-check">
+                    <input class="form-check-input" type="checkbox"
+                           [id]="'cat-'+cat.categoryId"
+                           [checked]="selectedCategories.includes(cat.categoryId)"
+                           (change)="onCategoryToggle(cat.categoryId, $event)">
+                    <label class="form-check-label small" [for]="'cat-'+cat.categoryId">
+                      {{ cat.categoryName }}
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 3. Duration -->
+            <div class="mb-3">
+              <label class="form-label">Duration (Minutes):</label>
+              <input type="number" class="form-control"
+                     formControlName="duration"
+                     placeholder="Enter duration in minutes ( Example: 70 )" />
+              <div *ngIf="itemForm.get('duration')?.invalid && itemForm.get('duration')?.touched" class="text-danger">
+                Duration is required (positive number).
+              </div>
+            </div>
+
+            <!-- 4. Translations -->
+            <!-- <div class="mb-3">
+              <label class="form-label">Item Names (Translations):</label>
+              <div *ngFor="let lang of translations">
+                <input type="text"
+                       class="form-control mb-2"
+                       [formControlName]="lang.code"
+                       [placeholder]="'Enter name in ' + lang.name" />
+              </div>
+            </div> -->
+
+        <div class="mb-3">
+            <label class="form-label">Item Names (Translations):</label>
+            <div formGroupName="translations">
+                <div class="row">
+                    <div class="col-md-6 mb-2" *ngFor="let lang of translations">
+                        <input type="text" class="form-control" [formControlName]="lang.locale"
+                            [placeholder]="'Enter name in ' + lang.name" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Footer Buttons -->
+            <div class="d-flex justify-content-between">
+              <a routerLink="/preptimer/condiments" class="btn btn-secondary">Back to List</a>
+              <button type="submit" (click)="saveItem()" class="btn text-white" style="background-color:#1a3668;">
+                Save
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

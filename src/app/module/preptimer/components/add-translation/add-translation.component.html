@@ -1,0 +1,69 @@
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg rounded-3">
+                <div class="card-header  text-center" style="background-color: #1a3668;color:white">
+                    <h4 class="mb-0" style="color:white !important">New Translation</h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="translationForm">
+                        <!-- Category Name -->
+                        <div class="mb-3">
+                            <label class="form-label">Language Name:</label>
+                            <input type="text" class="form-control" formControlName="name" maxlength="200" placeholder="Enter Language name" required>
+                            <div *ngIf="translationForm.get('name')?.invalid && translationForm.get('name')?.touched" class="text-danger">
+                                Name is required (Max 100 characters).
+                              </div>
+                        </div>
+
+                        <!-- Color Picker -->
+                        <div class="mb-3">
+                            <label class="form-label">Locale:</label>
+                            <input type="text" class="form-control" formControlName="locale" maxlength="200"  placeholder="e.g., en, fr, de"  required>
+                            <div *ngIf="translationForm.get('locale')?.invalid && translationForm.get('locale')?.touched" class="text-danger">
+                                Locale should be two lowercase letters (e.g., en, fr).
+                              </div>
+                        </div>
+
+                          <div *ngIf="editMode && currentFilePath && !selectedFile">
+                            <p class="d-flex align-items-center">
+                            <span class="me-2">Current File:</span>
+                            <a [href]="currentFilePath" target="_blank" class="btn btn-sm btn-outline-success me-2">
+                                Download
+                            </a>
+                            <button type="button" class="btn btn-sm btn-outline-primary"
+                                    (click)="onReplaceClick()">
+                                Replace File
+                            </button>
+                            </p>
+                        </div>
+
+                        <div class="mb-3"  *ngIf="showFileInput">
+                            <input type="file" class="form-control" (change)="onFileChange($event)" />
+                            <div *ngIf="selectedFile" class="mt-2 text-success">
+                                New File: {{ selectedFile.name }}
+                            </div>
+                        </div>
+
+                        <!-- Upload Image -->
+                        <div class="mb-3" *ngIf="!editMode">
+                            <label class="form-label">Upload File:</label>
+                            <input type="file" class="form-control"  (change)="onFileChange($event)" >
+                            <div *ngIf="translationForm.get('langFile')?.invalid && translationForm.get('langFile')?.touched" class="text-danger">
+                                Please select a file.
+                              </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between">
+                            <a routerLink="/preptimer/translations"  class="btn btn-secondary">Back to List</a>
+                            <button type="submit" (click)="onSubmit()" class="btn " style="background-color: #1a3668;color:white">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

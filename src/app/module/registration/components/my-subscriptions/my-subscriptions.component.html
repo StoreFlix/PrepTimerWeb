@@ -1,0 +1,73 @@
+<div *ngIf="reponseloading" class="loader">
+    <img src="assets/Images/loader.gif" />
+    <span class="loading-message">Please wait...</span>
+</div>
+<div class="container create-h position-relative label-wrapper mb-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-custom card-my-subscription">
+                <div class="card-body">
+                    <h2 class="text-theme-color heading-label">My Subscriptions</h2>
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <a class="btn btn-primary-custom pull-right"
+                             (click)="addSubsc()" [routerLink]="['/registration/addsubs']">Add Subscription</a>
+                            <a class="btn btn-secondary-custom pull-right mr-2"
+                            [ngClass]="{'disabled': fuseBillId <= 0}" (click)="openManageSubsc()"
+                            style="margin-right: 10px;">Manage Subscription</a>
+                        </div>
+                        <div class="col-md-4 mb-3" *ngFor="let subc of userSubsc.customerSubscriptions">
+                        <div class="card  shadow-sm text-center">
+                            <div class="card-header">
+                                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                              <h4 class="my-0 font-weight-normal">{{subc.productName}}</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group">
+                                    <a class="list-group-item list-group-item-action">
+                                      <div class="d-flex w-100 justify-content-between">
+                                        <h3 class="mb-1">Plan</h3>
+                                        <span>{{subc.planName}}</span>
+                                      </div>
+                                   </a><a class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h3 class="mb-1" *ngIf="subc.productName != 'Equipment Management'">Devices</h3>
+                                      
+                                      <h3 class="mb-1" *ngIf="subc.productName == 'Equipment Management'">Equipments</h3>
+                                      <span>{{subc.quantity}}</span>
+                                    </div>
+                                 </a>
+                                 <a class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h3 class="mb-1">Price</h3>
+                                      <span>${{subc.price}}</span>
+                                    </div>
+                                 </a>
+                                 <a class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h3 class="mb-1">Start Date</h3>
+                                      <span>{{getDateFormat(subc.lastPurchaseDate)}}</span>
+                                    </div>
+                                 </a>
+                                 <a class="list-group-item list-group-item-action my-sub-coupon">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h3 class="mb-1">Coupons</h3>
+                                      <span class="my-sub-coupon-detail">{{getCouponCodes(subc)}}</span>
+                                    </div>
+                                 </a>
+                                  </div>
+                              
+                       
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 mb-3" style="text-align: center;margin-top:3em;" *ngIf="userSubsc.customerSubscriptions.length == 0">
+                                  No Subscriptions Available.
+                        </div>
+                </div>
+              </div>
+           
+        </div>
+    </div>
+</div>
+</div>

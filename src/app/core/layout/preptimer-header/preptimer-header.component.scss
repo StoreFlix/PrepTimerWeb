@@ -1,0 +1,27 @@
+.section-header{
+    height: 100px;
+    background-color: #0067A6;
+    display: flex;
+}
+
+.header-title{
+    color:white;
+    align-self: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 16px;
+}
+
+.header-logo{
+    height: 90px; 
+    width: 90px;
+    align-self: center;
+}
+
+
+@media (max-width:320px) {
+    .header-title{
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+  }

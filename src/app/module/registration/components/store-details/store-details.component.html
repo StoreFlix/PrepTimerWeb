@@ -1,0 +1,135 @@
+<form class="col-md-12 col-sm-11 mx-auto" name="storeDetailsForm" #detailsForm="ngForm">
+    <div class="row">
+
+        <div class="mb-3 col-md-12">
+            <div class="row">
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">Name</label>
+           
+            <input type="text" name="storeName" class="form-control" [(ngModel)]="storeDetails.name"
+              #storeName="ngModel" placeholder="Store Name"/>
+
+            <div *ngIf="detailsForm.submitted && storeName.invalid" class="error-text">
+                <div *ngIf="storeName.errors.required">Name is required</div>
+            </div>
+        </div>
+        <div class="mb-3 col-md-6">
+            <!-- <label>Region</label>
+           
+            
+            <input type="text" name="region" class="form-control" [(ngModel)]="storeDetails.regionName"
+             required #region="ngModel" placeholder="Enter Region"/> -->
+
+           <!-- <select name="region" required class="custom-select custom-select-custom" 
+            [(ngModel)]="storeDetails.regionName" #region="ngModel">
+               <option value="">Include All</option>
+               <option value="Central">Central</option>
+               <option value="East">East</option>
+               <option value="West">West</option>
+           </select> -->
+
+            <!-- <div *ngIf="detailsForm.submitted && region.invalid" class="error-text">
+                <div *ngIf="region.errors.required">Region details are required</div>
+            </div> -->
+        </div>
+
+        <!-- <div class="mb-3 col-md-6">
+            <label>Territory</label>
+           
+            <input type="text" name="territoryName" class="form-control" [(ngModel)]="storeDetails.territoryName"
+             required #territoryName="ngModel" placeholder="Enter Territory"/>
+
+            <div *ngIf="detailsForm.submitted && territoryName.invalid" class="error-text">
+                <div *ngIf="territoryName.errors.required">Territory details are required</div>
+            </div>
+        </div>
+        <div class="mb-3 col-md-6">
+            <label>Sub-Territory</label>
+            
+            <input type="text" name="subTerritoryName" class="form-control" [(ngModel)]="storeDetails.subTerritoryName"
+             required #subTerritoryName="ngModel" placeholder="Enter Sub-Territory"/>
+        
+            <div *ngIf="detailsForm.submitted && subTerritoryName.invalid" class="error-text">
+                <div *ngIf="subTerritoryName.errors.required">Sub-Territory details are required</div>
+            </div>
+        </div> -->
+        <div class="mb-3 col-md-6">
+            <label  class="mb-1">Address</label>
+
+            <input type="text" name="storeAddress1" class="form-control" [(ngModel)]="storeDetails.address1"
+              #storeAddress1="ngModel" placeholder="Enter Address"/>
+
+            <div *ngIf="detailsForm.submitted && storeAddress1.invalid" class="error-text">
+                <div *ngIf="storeAddress1.errors.required">Address details are required</div>
+            </div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label  class="mb-1">City</label>
+          
+            <input type="text" name="storeCity" class="form-control" [(ngModel)]="storeDetails.city"
+                  #storeCity="ngModel" placeholder="Enter City"/>
+
+             <div *ngIf="detailsForm.submitted && storeCity.invalid" class="error-text">
+                <div *ngIf="storeCity.errors.required">City details are required</div>
+            </div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label   class="mb-1">Country</label>
+
+            <select name="storeCountry"  id="storeCountry" #storeCountry="ngModel" 
+            class="custom-select custom-select-custom form-control"
+                 [(ngModel)]="storeDetails.country" (ngModelChange)="countryChanged($event)">
+                 <option value="undefined">Select Country</option>
+                 <option *ngFor="let c of countriesList" [ngValue]="c.iso3">{{c.name}}</option>
+             </select>
+
+             <div *ngIf="detailsForm.submitted && storeCountry.invalid" class="error-text">
+                <div *ngIf="storeCountry.errors.required">Country details are required</div>
+            </div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label  class="mb-1">State</label>
+        
+            <select name="storeState"  id="storeState" #storeState="ngModel" 
+            class="custom-select custom-select-custom form-control"
+                [(ngModel)]="storeDetails.state">
+                <option value="undefined">Select State</option>
+                <option *ngFor="let c of stateList" [ngValue]="c.subDivisionIsoCode">{{c.name}}</option>
+            </select>
+        
+            <div *ngIf="detailsForm.submitted && storeState.invalid" class="error-text">
+                <div *ngIf="storeState.errors.required">State details are required</div>
+            </div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label  class="mb-1">Zip Code</label>
+          
+            <input type="text" maxlength="5" name="storeZipcode" class="form-control" [(ngModel)]="storeDetails.zipcode"
+            (keypress)="allowOnlyNumbers($event)" (ngModelChange)="calGeoCode()"  #storeZipcode="ngModel" placeholder="Enter Zip Code"/>
+
+             <div *ngIf="detailsForm.submitted && storeZipcode.invalid" class="error-text">
+                <div *ngIf="storeZipcode.errors.required">ZIP code details are required</div>
+            </div>
+        </div> 
+        
+        
+        <!-- <div class="mb-3 col-md-6">
+            <label  class="mb-1">Phone</label>
+          
+            <input type="text" maxlength="10" name="storephone" class="form-control" [(ngModel)]="storeDetails.phone"
+                 required (keypress)="allowOnlyNumbers($event)"  #storephone="ngModel" placeholder="Enter Number"/>
+
+             <div *ngIf="detailsForm.submitted && storephone.invalid" class="error-text">
+                <div *ngIf="storephone.errors.required">Phone details are required</div>
+            </div>
+        </div>  -->
+</div>
+</div>
+    </div>
+
+</form>
+

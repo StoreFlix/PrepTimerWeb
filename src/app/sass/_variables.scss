@@ -1,0 +1,79 @@
+
+
+
+//Theem Light gray
+// App Fonts
+    $header-color:#504d4d;
+    $primary-font:'Roboto', sans-serif;
+
+// App Colors
+
+     $app-color1: #118aa5;
+
+     $primary-color:#FFE289;
+     $secondary-color:#FFD248;
+
+     $secondary-color-sub:lighten($secondary-color, 60%);
+     $primary-color-sub:lighten($primary-color, 10%);
+
+
+     $primary-gray-color:#505B6E;
+     $secondary-gray-color:#F6F8Fb;
+
+
+
+    // Color Palette Generator ( https://colors.muz.li/ )
+
+    // color shades
+    $color1:#f9b4ab;
+    $color2:#fdebd3;
+    $color3:#B1CEE4;
+    $color4:#679186;
+    $color5:#bbd4ce;
+    $color6:#f1e1cc;
+
+// breadcrumb 
+     $breadcrumb:#3b3838 ;
+
+// Button Text Colors
+    $primary-button-testx-color:#505B6E;
+    $secondary-button-testx-color:#505B6E;
+
+// Text Colors
+    $primary-text-color:#505B6E;
+
+// Text Colors 2
+    $primary-text-color2:#9CA7BE;
+
+// Storelynk old App Color
+    $portal-storelynk-color:#108aa4;
+
+
+// Henny Penny themes
+
+
+// App Fonts
+    $header-color:#504d4d;
+ $primary-font:'Roboto', sans-serif;
+
+// App Colors
+
+ $app-color1: #118aa5;
+
+ $primary-color:#141f47;
+ $secondary-color:#141f47;
+
+ $app-color1: $primary-color;
+
+ $secondary-color-sub:lighten($secondary-color, 60%);
+ $primary-color-sub:lighten($primary-color, 10%);
+
+
+ $primary-gray-color:#E7EAEE;
+ $secondary-gray-color:#F6F8Fb;
+
+// Button Text Colors
+ $primary-button-testx-color:#ffffff;
+ $secondary-button-testx-color:#212529;  
+
+ 

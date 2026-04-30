@@ -1,0 +1,282 @@
+<div class="col-md-12">
+    <div class="">
+        <div class="container p-0">
+            <div class="row ">
+                <form class="col-lg-8 order-res-2 left-box-payment" name="paymentForm" #paymentForm="ngForm">
+                    <div style="display: flex;font-size: 20px;margin-bottom: 5px;">
+                        <div style="margin-right: 1rem;">Billing Address</div>
+                        <i class="fa fa-edit" style="font-size:24px;cursor: pointer;" (click)="gotoPrevStep()"></i>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                           <span>{{fusebillPaymentRequest.firstName}} {{fusebillPaymentRequest.lastName}}</span><br/>
+                           <span>{{fusebillPaymentRequest.address1}}</span><br/>
+                           <span>{{fusebillPaymentRequest.city}}</span><br/>
+                           <span>{{stateName}}</span><br/>
+                           <span>{{countryName}}</span> - <span>{{fusebillPaymentRequest.postalZip}}</span>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                           
+                        </div>
+                        <!-- <div class="mb-3 col-md-6">
+                            <label>First Name
+                                <span class="required-text">*</span>
+                            </label>
+                            <input [(ngModel)]="fusebillPaymentRequest.firstName" type="text" name="firstName" class="form-control"
+                                placeholder="Enter First Name" required #firstName="ngModel"/>
+                            <div *ngIf="paymentForm.submitted&& firstName.invalid" class="error-text">
+                                <div *ngIf="firstName.errors.required">First name is required</div>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-6 payment-custom-checkbox">
+                            <div class="custom-control custom-checkbox">
+                            <input [(ngModel)]="copyAddress" id="address-custom-checkbox" name="copyAddress" (ngModelChange)="copyCompanyAddress()"
+                            type="checkbox" class="custom-control-input" />
+                            <label for="address-custom-checkbox"  class="custom-control-label">Use existing address information</label>  
+                        </div>  
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label>Last Name
+                                <span class="required-text">*</span>
+                            </label>
+                            <input type="text" [(ngModel)]="fusebillPaymentRequest.lastName" name="lastName"
+                                class="form-control" placeholder="Enter Last Name" required  #lastName="ngModel"/>
+                                <div *ngIf="paymentForm.submitted&& lastName.invalid" class="error-text">
+                                    <div *ngIf="lastName.errors.required">Last name is required</div>
+                                </div>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label>Address
+                                <span class="required-text">*</span>
+                            </label>
+                            <input type="text" name="address1" required [(ngModel)]="fusebillPaymentRequest.address1" class="form-control" placeholder="Enter Address" 
+                                required  #address1="ngModel" />
+
+                            <div *ngIf="paymentForm.submitted&& address1.invalid" class="error-text">
+                                <div *ngIf="address1.errors.required">Address is required</div>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label>City
+                                <span class="required-text">*</span>
+                            </label>
+
+                            <input type="text" name="city" required [(ngModel)]="fusebillPaymentRequest.city" class="form-control" placeholder="Enter City" 
+                                #city="ngModel" />
+                            
+                            <div *ngIf="paymentForm.submitted&& city.invalid" class="error-text">
+                                <div *ngIf="city.errors.required">City details are required</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label>State
+                                <span class="required-text">*</span>
+                            </label>
+                            <select name="state" id="" [(ngModel)]="fusebillPaymentRequest.stateCode" class="custom-select custom-select-custom form-control"
+                                required #state="ngModel" >
+                                <option value="undefined">Select State</option>
+                                <option *ngFor="let c of stateList" [ngValue]="c.subDivisionIsoCode">{{c.name}}</option>
+                            </select>
+                            <div *ngIf="paymentForm.submitted&& state.invalid" class="error-text">
+                                <div *ngIf="state.errors.required">State details are required</div>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label>Country
+                                <span class="required-text">*</span>
+                            </label>
+                            <select name="country" id="" [(ngModel)]="fusebillPaymentRequest.countryCode" class="custom-select custom-select-custom form-control" 
+                            (ngModelChange)="countryChanged($event)" required #country="ngModel">
+                                <option value="undefined">Select Country</option>
+                                <option *ngFor="let c of countriesList" [ngValue]="c.iso3">{{c.name}}</option>
+                            </select>
+                            <div *ngIf="paymentForm.submitted&& country.invalid" class="error-text">
+                                <div *ngIf="country.errors.required">Country details are required</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6 ">
+                            <label>Postal/Zip
+                                <span class="required-text">*</span>
+                            </label>
+                            <input type="text" (keypress)="allowOnlyNumbers($event)" maxlength="6"    name="postalZip" [(ngModel)]="fusebillPaymentRequest.postalZip" class="form-control" 
+                            placeholder="Enter Code" required #postalZip="ngModel"/>
+                            <div *ngIf="paymentForm.submitted&& postalZip.invalid" class="error-text">
+                                <div *ngIf="postalZip.errors.required">Zipcode details are required</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+
+                        </div> -->
+                        <div class="custom-divider"></div>
+                        <div class="mb-3 col-md-6">
+                            <label>Card Number
+                                <span class="required-text">*</span>
+                            </label>
+                            <input [(ngModel)]="fusebillPaymentRequest.cardNumber" type="text" (keypress)="allowOnlyNumbers($event)" name="cardNumber" class="form-control"
+                                placeholder="Enter Card Number" required #cardNumber="ngModel" />
+                            <div *ngIf="paymentForm.submitted&& cardNumber.invalid" class="error-text">
+                                <div *ngIf="cardNumber.errors.required">Card details are required</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+
+                        </div>
+
+                        <div class="mb-3 col-md-2">
+                            <label>Exp Month
+                                <span class="required-text">*</span>
+                            </label>
+                            <div class="form-inline">
+                                <input  type="text" (keypress)="allowOnlyNumbers($event)" maxlength="2" [(ngModel)]="fusebillPaymentRequest.expirationMonth"
+                                    name="expirationMonth" #expirationMonth="ngModel" class="form-control width-100 mr-1 mb-2" placeholder="mm"
+                                    required />
+                                    <div *ngIf="paymentForm.submitted&& expirationMonth.invalid" class="error-text">
+                                        <div *ngIf="expirationMonth.errors.required">Card expiry details are required</div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-2">
+                            <label>Exp Year
+                                <span class="required-text">*</span>
+                            </label>
+                            <div class="form-inline">
+                                <input  type="text" (keypress)="allowOnlyNumbers($event)" maxlength="2" [(ngModel)]="fusebillPaymentRequest.expirationYear"
+                                    name="expirationYear" #expirationYear="ngModel" class="form-control width-100 mr-1 mb-2" placeholder="yy"
+                                    required />
+                                    <div *ngIf="paymentForm.submitted&& expirationYear.invalid" class="error-text">
+                                        <div *ngIf="expirationYear.errors.required">Card expiry details are required</div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-2">
+                            <label>CVV
+                                <span class="required-text">*</span>
+                            </label>
+                            <input type="text" (keypress)="allowOnlyNumbers($event)" maxlength="3" [(ngModel)]="fusebillPaymentRequest.cvv" name="cvv"
+                                class="form-control width-100" placeholder="CVV" required #cvv="ngModel"/>
+                                <div *ngIf="paymentForm.submitted&& cvv.invalid" class="error-text">
+                                    <div *ngIf="cvv.errors.required">Card cvv details are required</div>
+                                </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label>Captcha
+                                <span class="required-text">*</span>
+                            </label>
+                        <div class="payment-captcha">
+                            <re-captcha #captcha (resolved)="resolved($event)" required name="captcha"
+                                siteKey="6Lc2AoUaAAAAAF8daIpzevNvLOw6j-HjrWYFv3Ut">
+                            </re-captcha>
+                        </div>
+                        </div>
+                    </div>
+
+                </form>
+                <form class="col-lg-4 order-res-1 right-box-payment" name="alertBasicForm">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <h4 class="mb-0 d-flex justify-content-between align-items-center your-cart">
+                                <span>Order Summary</span>
+                            </h4>
+                            <ul class="list-group mb-3 paymet-summary-list">
+                                <li class=" rounded-0 list-group-item  lh-condensed"
+                                    *ngFor="let item of invoiceResponse.fusebillDraftInvoiceResponse">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <h4 class="my-0">{{item.productName}}</h4>
+                                        <small class="d-block">{{item.planName}}</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="text-muted">Devices</span>
+                                        <span class="text-muted">{{item.quantity}}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="text-muted">Unit Price</span>
+                                        <span class="text-muted">${{item.unitPrice}}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between promo-code-row-inside mb-1"
+                                        *ngFor="let discount of item.discounts">
+                                        <div class="">
+                                            <span class="my-0 d-block font-highlighted">Promo code</span>
+                                            <span>{{getCoupanName(discount.discountDescription)}}
+                                                <a *ngIf="!couponDisable" class="remove-coupon" (click)="removeCoupons(discount.discountDescription)">
+                                                    [Remove]
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <span class="text-success font-highlighted">-${{discount.discountAmount}} </span>
+
+                                    </div>
+                                    <div class="d-flex justify-content-between font-highlighted">
+                                        <span>Final Price</span>
+                                        <span>${{item.taxableAmount}}</span>
+                                    </div>
+
+                                </li>
+                             
+                                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                    <div>
+                                        <h4 class="my-0">Total
+                                        </h4>
+                                    </div>
+                                    <span class="font-highlighted">${{invoiceResponse.subtotal}}</span>
+
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between lh-condensed" 
+                                 *ngIf="invoiceResponse.taxes != null">
+                                    <div>
+                                        <h4 class="my-0">Tax</h4>
+
+
+                                    </div>
+                                    <span class="font-highlighted" *ngIf="invoiceResponse.taxes != null">${{invoiceResponse.taxes.total}}</span>
+                                    <span class="font-highlighted" *ngIf="invoiceResponse.taxes == null">$0</span>
+
+                                </li>
+                                <li
+                                    class="list-group-item d-flex justify-content-between lh-condensed bg-basethemecolor order-total">
+                                    <div>
+                                        <h4 class="my-0 text-white">Order Total</h4>
+
+
+                                    </div>
+                                    <span class="text-white">${{invoiceResponse.total}}</span>
+
+                                </li>
+                            </ul>
+                            <!-- alert for zero payment start -->
+                            <div class="alert alert-warning" role="alert" *ngIf="invoiceResponse.subtotal <= 0">
+                                Registration process is going to charge a minimum transaction fee $0.10 to validate payment gateway. We will credit/refund you back this amount on successful transaction.
+                            </div>
+                             <!-- alert for zero payment end -->
+                            <div class="box-promo-code" >
+                                <div class="input-group ">
+                                    <input type="text" [readonly]="couponDisable"  name="promoCode" 
+                                        class="form-control promo-code-payment me-3"
+                                        placeholder="Enter Promo Code" [(ngModel)]="promoCode">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-secondary active" style="margin-top: 5px;"
+                                            (click)="applyCoupons()" [disabled]="couponDisable">Redeem</button>
+                                    </div>
+                                </div>
+                                <div *ngIf="showCoupanError" class="validation-error">
+                                    Invalid Coupon
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

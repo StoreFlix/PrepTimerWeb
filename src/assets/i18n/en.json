@@ -1,0 +1,85 @@
+{
+  "CreateNewReport": "Create New Report",
+  "ActivityCR": "Activity Completion Report",
+  "ReportList": {
+    "name": "Name",
+    "createdBy": "Created By",
+    "createdDate": "Date",
+    "createNew": "Create New",
+    "myReport": "My Report",
+    "sharedwithme": "Shared with me",
+    "archived": "Archived",
+    "filters": "Filters",
+    "Error": {
+      "errorReportlist": "Something went wrong in Report List!"
+    },
+    "Warning":{
+      "deleteReport": "Are you sure you want to delete this Report?"
+    }
+  },
+  "Report-Create": {
+    "createNewReport": "Create New Report",
+    "saveMessage": "Report saved successfully!",
+    "updateMessage": "Report updated successfully!",
+    "cancel": "Cancel",
+    "create": "Create",
+    "addNewWidget": "Add New Widget",
+    "addNewWidgetExtra": "(You can add multiple widgets to your report)",
+    "widgetTitle": "Widget Title",
+    "activityCompletion": "Activity Completion",
+    "type": "Type",
+    "subType": "Sub Type",
+    "dateRange": "Date Range",
+    "starDate": "Start Date:",
+    "endDate": "End Date:",
+    "viewAs": "View as",
+    "region": "Region",
+    "territory": "Territory",
+    "subTerritory": "Sub Territory",
+    "store": "Store",
+    "selectColumns": "Select Fields",
+    "aggregate": "Aggregate Fields",
+    "aggregatefunction": "Aggregate Operations",
+    "Filter": {
+      "logicalOperator": "Logical Operator",
+      "filter": "Filter",
+      "delete": "Delete",
+      "metric": "Filter Field",
+      "metricValue": "Filter Data",
+      "attribute": "Operator",
+      "addNewFilter": "Add New Filter",
+      "saveFilter": "Save Filter"
+    },
+    "addFilter": "Add Filter",
+    "addWidget": "Add Widget",
+    "Error": {
+      "errorReport": "Something went wrong in Report!",
+      "errorDropdown": "Something went wrong loading default Dropdowns!",
+      "errorType": "Something went wrong in Type & Sub Type!",
+      "errorRegion": "Something went wrong in Region!",
+      "errorTerritory": "Something went wrong in Territory!",
+      "errorSubTerritory": "Something went wrong in Sub Territory!"
+    },
+    "Warning": {
+      "warningReport": "Please add atleast one widget!",
+      "closeReport": "Are you sure you want to close this Report?",
+      "WidgetLoss": "Widget data should be loss!",
+      "deleteWidget": "Are you sure you want to delete this Widget?",
+      "WidgetDetail":"Data Not Found…",
+      "WidgetData":"Please change filter parameters."
+    }
+  },
+  "AlertList": {
+    "alerts": "Alerts",
+    "store": "Store",
+    "alertRecipient": "Alert Recipient",
+    "alertType": "Alert Type",
+    "alertStatus": "Alert Status",
+    "createNew": "Create New",
+    "createNewU": "CREATE NEW",
+    "filters": "Filters",
+    "Error": {
+      "errorReportlist": "Something went wrong in Alert List!"
+    }
+  }
+}

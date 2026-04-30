@@ -1,0 +1,108 @@
+<form class="col-lg-8 order-res-2 left-box-payment" name="billingAddressForm" #billingAddressForm="ngForm">
+    <div class="row">
+        <!-- <div class="mb-3 col-md-6">
+            <div class=" custom-checkbox" style="display:flex;align-items: center;">
+                <input [(ngModel)]="copyAddress" id="address-custom-checkbox" name="copyAddress"
+                    (ngModelChange)="copyCompanyAddress()" type="checkbox" class="custom-control-input" 
+                    style="height: 20px;width: 20px;"/>
+                <label for="address-custom-checkbox" style="margin-left: 5px;" class="ml-5 custom-control-label">Use existing address information</label>
+            </div>
+        </div> -->
+
+        <!-- <div class="mb-3 col-md-6">
+
+        </div> -->
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">First Name
+                <span class="required-text">*</span>
+            </label>
+            <input [(ngModel)]="fusebillPaymentRequest.firstName" type="text" name="firstName" class="form-control"
+                placeholder="Enter First Name" required #firstName="ngModel"/>
+            <div *ngIf="billingAddressForm.submitted&& firstName.invalid" class="error-text">
+                <div *ngIf="firstName.errors.required">First name is required</div>
+            </div>
+        </div>
+       
+        <!-- <div class="mb-3 col-md-6" style="display: flex;align-items: end;">
+            <input [(ngModel)]="copyAddress" name="copyAddress" (ngModelChange)="copyCompanyAddress()"
+             type="checkbox" class="form-control" style="width: 25px;margin-left: 5px;margin-top: 15px"/>
+            <label  style="margin-left: 5px;margin-top: 15px">Use existing address information</label>  
+        </div> -->
+
+
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">Last Name
+                <span class="required-text">*</span>
+            </label>
+            <input type="text" [(ngModel)]="fusebillPaymentRequest.lastName" name="lastName"
+                class="form-control" placeholder="Enter Last Name" required  #lastName="ngModel"/>
+                <div *ngIf="billingAddressForm.submitted&& lastName.invalid" class="error-text">
+                    <div *ngIf="lastName.errors.required">Last name is required</div>
+                </div>
+        </div>
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">Address
+                <span class="required-text">*</span>
+            </label>
+            <input type="text" name="address1" required [(ngModel)]="fusebillPaymentRequest.address1" class="form-control" placeholder="Enter Address" 
+                required  #address1="ngModel" />
+
+            <div *ngIf="billingAddressForm.submitted&& address1.invalid" class="error-text">
+                <div *ngIf="address1.errors.required">Address is required</div>
+            </div>
+        </div>
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">City
+                <span class="required-text">*</span>
+            </label>
+
+            <input type="text" name="city" required [(ngModel)]="fusebillPaymentRequest.city" class="form-control" placeholder="Enter City" 
+                #city="ngModel" />
+            
+            <div *ngIf="billingAddressForm.submitted&& city.invalid" class="error-text">
+                <div *ngIf="city.errors.required">City details are required</div>
+            </div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">Country
+                <span class="required-text">*</span>
+            </label>
+            <select name="country" id="" [(ngModel)]="fusebillPaymentRequest.countryCode" class="custom-select custom-select-custom form-control" 
+            (ngModelChange)="countryChanged($event)" required #country="ngModel">
+                <option value="undefined">Select Country</option>
+                <option *ngFor="let c of countriesList" [ngValue]="c.iso3">{{c.name}}</option>
+            </select>
+            <div *ngIf="billingAddressForm.submitted&& country.invalid" class="error-text">
+                <div *ngIf="country.errors.required">Country details are required</div>
+            </div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">State
+                <span class="required-text">*</span>
+            </label>
+            <select name="state" id="" [(ngModel)]="fusebillPaymentRequest.stateCode" class="custom-select custom-select-custom form-control"
+                required #state="ngModel" >
+                <option value="undefined">Select State</option>
+                <option *ngFor="let c of stateList" [ngValue]="c.subDivisionIsoCode">{{c.name}}</option>
+            </select>
+            <div *ngIf="billingAddressForm.submitted&& state.invalid" class="error-text">
+                <div *ngIf="state.errors.required">State details are required</div>
+            </div>
+        </div>
+        
+
+        <div class="mb-3 col-md-6 ">
+            <label class="mb-1">Postal/Zip
+                <span class="required-text">*</span>
+            </label>
+            <input type="text" maxlength="10"    name="postalZip" [(ngModel)]="fusebillPaymentRequest.postalZip" class="form-control" 
+            placeholder="Enter Code" required #postalZip="ngModel"/>
+            <div *ngIf="billingAddressForm.submitted&& postalZip.invalid" class="error-text">
+                <div *ngIf="postalZip.errors.required">Zipcode details are required</div>
+            </div>
+        </div>
+
+       </div>
+</form>

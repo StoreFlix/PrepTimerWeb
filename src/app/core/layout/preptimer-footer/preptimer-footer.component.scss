@@ -1,0 +1,49 @@
+.section-header{
+    height: auto;
+    background-color: #0067A6;
+    display: flex;
+   
+}
+
+.header-title{
+    color:white;
+    align-self: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 16px;
+}
+.footer-title{
+    align-self: center;
+    color:white;
+    margin-left: 16px;
+    flex:1;
+}
+
+.header-logo{
+    height: 60px; 
+    width: 60px;
+    align-self: center;
+}
+
+.company-logo{
+    height: 60px; 
+
+}
+.company-logo-section{
+    flex:1;display:flex;justify-content: center;
+}
+
+
+@media (max-width:320px) {
+    .header-title{
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    .section-header{
+        padding: 5px;
+        flex-direction: column;
+    }
+    .company-logo-section{
+        justify-content: left;
+    }
+  }

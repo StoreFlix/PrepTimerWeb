@@ -1,0 +1,115 @@
+<form class="col-md-12 col-sm-11 mx-auto"  name="userDetailsForm" #detailsForm="ngForm">
+    <div class="row">
+        <!-- <div class="col-md-12 mb-2">
+            <h3 class="text-theme-color">Admin User Details</h3>
+        </div> -->
+      
+
+        <div class="mb-3 " [ngClass]="showLogo ? 'col-md-10' : 'col-md-12'">
+            <div class="row">
+        <!-- <div class="mb-3 col-md-6">
+            <label  class="mb-1">Username</label>
+           
+            <input type="text" name="userName" maxlength="20" class="form-control" 
+            placeholder="Enter Name" [(ngModel)]="userDetails.name" #userName="ngModel"
+             required (keypress)="allowOnlyAlphaNumeric($event)" (change)="checkValidUserName()" />
+
+            <div *ngIf="detailsForm.submitted && userName.invalid" class="error-text">
+                <div *ngIf="userName.errors.required">Username is required</div>
+            </div>
+            <div class="error-text" *ngIf="!validUserName">User name not available. Please try new one!</div>
+        </div> -->
+        <div class="mb-3 col-md-6">
+            <label  class="mb-1">Email
+                <span class="required-text">*</span>
+            </label>
+           
+            <input type="text" name="email" class="form-control" #email="ngModel"
+            placeholder="Enter Email ID"  [(ngModel)]="userDetails.email"
+             required (change)="emailAddressChanged()"/>
+
+            <div *ngIf="detailsForm.submitted && email.invalid" class="error-text">
+                <div *ngIf="email.errors.required">Email details are required</div>
+            </div>
+            <div class="error-text" *ngIf="!validEmail">Please enter valid email!</div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <!-- <label  class="mb-1">Username</label>
+           
+            <input type="text" name="userName" maxlength="20" class="form-control" 
+            placeholder="Enter Name" [(ngModel)]="userDetails.name" #userName="ngModel"
+             required (keypress)="allowOnlyAlphaNumeric($event)" (change)="checkValidUserName()" />
+
+            <div *ngIf="detailsForm.submitted && userName.invalid" class="error-text">
+                <div *ngIf="userName.errors.required">Username is required</div>
+            </div>
+            <div class="error-text" *ngIf="!validUserName">User name not available. Please try new one!</div> -->
+
+            <!-- <label class="mb-1">Phone</label>
+        
+            <input type="text" name="phone1" maxlength="10" class="form-control" #phone1="ngModel"
+                [(ngModel)]="userDetails.phone1" (keypress)="allowOnlyNumbers($event)" required placeholder="Enter Contact Number" />
+        
+            <div *ngIf="detailsForm.submitted && phone1.invalid" class="error-text">
+                <div *ngIf="phone1.errors.required">Phone details are required</div>
+            </div> -->
+        </div>
+
+        
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">New Password
+                <span class="required-text">*</span>
+            </label>
+           
+            <input type="password"name="password" class="form-control"   #password="ngModel"
+            placeholder="Enter Password" [(ngModel)]="userDetails.password"
+             required />
+
+            <div *ngIf="detailsForm.submitted && password.invalid" class="error-text">
+                <div *ngIf="password.errors.required">Password is required</div>
+            </div>
+        </div>
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">Confirm Password
+                <span class="required-text">*</span>
+            </label>
+           
+            <input type="password" name="confirmPassword" class="form-control" 
+             required #confirmPassword ="ngModel" [(ngModel)]="cnfmpassword" placeholder="Re-Enter Password"/>
+             <div *ngIf="detailsForm.submitted && confirmPassword.invalid" class="error-text">
+                <div *ngIf="confirmPassword.errors.required">Confirm Password is required</div>
+            </div>
+        </div>                
+<!--        
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">First Name</label>
+           
+            <input type="text" name="firstName" class="form-control" #firstName="ngModel"
+            placeholder="Enter First Name" [(ngModel)]="userDetails.firstName"
+              />
+
+            <div *ngIf="detailsForm.submitted && firstName.invalid" class="error-text">
+                <div *ngIf="firstName.errors.required">First Name details are required</div>
+            </div>
+        </div>
+        <div class="mb-3 col-md-6">
+            <label class="mb-1">Last Name</label>
+           
+            <input type="text" name="lastName" class="form-control" #lastName="ngModel"
+            placeholder="Enter Last Name" [(ngModel)]="userDetails.lastName"
+              />
+
+            <div *ngIf="detailsForm.submitted && lastName.invalid" class="error-text">
+                <div *ngIf="lastName.errors.required">Last Name details are required</div>
+            </div>
+        </div> -->
+
+        <div class="mb-3 col-md-6">
+          
+        </div>
+        </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,98 @@
+.alert-create-container{
+    background-color: #F6F8FB;
+    padding: 0px 30px;
+
+    .step{
+        border-left:1px solid #ccc ;
+        position: relative;
+    }
+    .badge-secondary{
+        background-color:  $primary-text-color2;
+        border-radius:50% ;
+    }
+    
+    .badge-step{
+        position: absolute;
+        left: -15px;
+        padding: 9px 11px;
+        background-color:  #fff;
+        color: $primary-text-color;
+        border:1px solid $primary-text-color2;
+    }
+    .badge-step-done{
+        padding: 9px 9px;
+    }
+    
+    .badge-step-active{
+        background-color:  $primary-text-color2;
+        color: #fff;
+    }
+    
+    .alert-create-h {
+        height: calc(100vh - 260px);
+        margin-top: 0px;
+    }
+    
+    .step-conten{
+        padding: 4px 70px 11px 34px;
+    
+    } 
+
+    .alert-edit{
+        .box1{
+            padding: 0px;
+        }
+
+        .list-group {
+             border-radius: 0px;
+        }
+
+
+        .list-group-item.active {
+            z-index: 2;
+            color: #fff;
+            border: 0px;
+            background-color:$primary-text-color;
+            border-color:$primary-text-color;
+            position: relative;
+        }
+        .active-border{
+            background-color: #FFD248;
+            width: 10px;
+            height: 100%;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+        .list-group-item{
+            padding: 16px 20px;
+            font-size: 14px;
+        }
+    }
+}
+
+.bottom-0{
+    bottom: 0px;
+}
+.alert-Parameter{
+    right: 24px !important;
+    top: 55px !important;
+}
+
+
+.modal-footer-alert {
+    justify-content: center !important;
+}
+
+@media (max-width: 500px) {
+
+    .alert-create-mobileH{
+        height: 160px !important;
+    }
+    .alert-edit{
+       
+        margin-top: 18px;
+    }
+
+
+}

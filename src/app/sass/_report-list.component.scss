@@ -1,0 +1,436 @@
+
+
+.card-column-view {
+    padding:0px 5px 10px;
+}
+.card-column-view p {
+    margin-bottom: 1px;
+    font-size: 13px;
+}
+.aria-padding{
+    position: absolute;
+    top: 39%;
+    right:10px;
+    color: black;
+}
+.fa-ellipsis-v{
+    color: black;
+}
+.has-search{
+        .form-control-feedback {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.1rem;
+        text-align: center;
+        pointer-events: none;
+        color: $primary-text-color2;
+        font-size: 18px;
+    }
+    .form-control {
+        padding-left: 2.375rem;
+    }
+
+}
+.filter-list{
+        border: 1px solid #CFD6E0;
+        padding: 5px 20px;
+        color:  $primary-text-color2;
+        border-radius: 0px;
+}
+.filter-container {
+    border: 1px solid #CFD6E0;
+    margin: 5px 5px 10px;
+    padding: 10px 10px;
+    float: left;
+    width: 100%;
+    display: block;
+	border-radius: 5px;
+}
+
+.search-text{
+   height: 100%;
+   border-color: #CFD6E0;
+}
+
+.card-right{
+    position: relative;
+    top: 10px;
+}
+
+.card-hover:hover{
+    background-color: black;
+    background: #000;
+    color: wheat;
+}
+
+.pagination-control{
+    position: fixed;
+    bottom: 0px;
+    padding: 10px 27%;
+}
+
+.filter-dropdown{
+    margin-top: 8px;
+    color: $primary-text-color;
+}
+.dots-dropdown{
+    position: absolute;
+    top: -8px;
+    left: -1px;
+    .mat-select-arrow {
+        display: none;
+    }
+    .mat-select-value-text {
+        display: none;
+    }
+}
+
+.create-new{
+    position: relative;
+    height: 57px;
+    padding: 25px 85px;
+    margin: 0 auto;
+    color: $primary-text-color;
+    margin-top: 11px;
+}
+.card-body {
+    padding: 0.8rem;
+
+}
+.widget .card-body {
+    padding: 0.8rem;
+    overflow-x: scroll;
+}
+
+.fa-icon-max{
+        position: absolute;
+        right: 37px;
+        top: 17px;
+        z-index: 100;
+        color: #BFC4CB;
+}
+
+.fa-icon-full {
+    margin-right: 36px;
+}
+
+.card {
+    border-radius: 0px;
+    background-color: $secondary-gray-color;
+    border-color: #e0e6ef;
+    color:$primary-text-color;
+}
+
+.card .fa{
+    color:$primary-text-color;
+    opacity: .3;
+}
+
+ .card-active {
+    border-radius: 0px;
+    background-color: $primary-text-color;
+    border-color: $primary-text-color;
+    color:#fff;
+}
+
+.c-pointer{
+    cursor: pointer;
+}
+.c-pointer:hover{
+    opacity: .7;
+}
+.card-active .fa{
+    color:#fff;
+    opacity: .5;
+}
+
+.create-sm{
+    display: none;
+}
+.create-lg{
+    display: block;
+}
+
+
+.filter-btn{
+    min-width: 108px;
+    text-align: right;
+}
+
+.form-b{
+    background: #fff;
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+.widget{
+    .modal-dialog {
+        max-width: 90% !important;
+    }
+    .aria-padding{
+        top: 13px !important;
+    }
+
+    h5{
+        font-size: 16px;
+    }
+
+    .table thead th {
+        background-color:  $primary-color;
+        border-bottom: 5px solid #ccc;
+        color: $primary-button-testx-color;
+        min-width: 200px;
+        .fa {
+            color: $primary-button-testx-color;
+            opacity:1;
+        }
+    }
+}
+
+.MY-lg-12 .image-widget{
+    height: 1250px !important;
+}
+
+.image_view {
+    border: 1px solid $primary-gray-color;
+    padding: 15px;
+    margin: 5px;
+    dt,dd{
+            font-family:  $primary-font !important;
+            text-align: left !important;
+    }
+
+    dt{
+        font-weight: bold !important;
+    }
+
+}
+.report-alert-arrow {
+    position: absolute;
+    right: -1px;
+    top: 0px;
+    cursor: pointer;
+}
+
+.alertarrow .report-alert-arrow {
+    position: absolute;
+    right: -20px;
+    top: 0px;
+    cursor: pointer;
+}
+
+
+
+
+@media (max-width: 991.98px) {
+    .has-search{
+        width: 82%;
+        float: left;
+        padding-left: 7px;
+    }
+    .filter-btn{
+        width: 16%;
+        float: left;
+        text-align: right;
+    }
+    .filter-dropdown{
+        width: 50%;
+        float: left;
+        margin-bottom: 20px;
+        padding-left: 8px;
+    }
+    .create-lg{
+        display: none;
+    }
+    .create-sm{
+        display: block;
+        width: 25%;
+    }
+
+}
+@media (max-width: 767.98px) {
+    .has-search{
+        width: 65%;
+    }
+    .filter-btn{
+        width: 31%;
+    }
+    .pagination-control{
+        position: initial;
+        padding: 10px 0px;
+        margin: 0 auto;
+    }
+
+}
+.multiselect-dropdown{
+    .dropdown-btn{
+    font-weight:300 !important;}
+ }
+
+ .mat-option .mat-icon{
+    margin-right: 0px !important;
+    vertical-align: initial !important;
+ }
+
+ .appscroll{
+     overflow: scroll;
+ }
+
+ .padding-Pagination {
+    padding-bottom: 58px;
+}
+
+.pagination-cust{
+    margin-bottom: 0px;
+    a{
+        color: $primary-text-color;
+        cursor: pointer;
+    }
+    a:hover{
+        color:$primary-text-color;
+        cursor: pointer;
+    }
+    .page-link{
+        background-color: rgba(0, 0, 0, 0.00) !important;
+        padding: 0px;
+        border: 1px;
+        padding-top: 3px;
+    }
+    
+    .Intext{
+        width: 44px;
+        text-align: center;
+    }
+}
+
+.pagination_border {
+    border-top: 1px solid #dee2e6;
+    padding-top: 21px;
+}
+
+
+.pdf{
+
+    .mycart{
+        margin: auto;
+    }
+
+
+    h1 {
+        
+    }
+
+    .equipment_table{
+
+    }
+
+}
+
+
+
+
+
+// Alert Screen Css Start------
+.dot{
+    padding: 5px 6px;
+    width: 30px;
+    height: 28px;
+    background-color:  $primary-text-color2;
+    border-radius: 50%;
+    float: left;
+    margin-right: 6px;
+    margin-top: 11px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+    cursor: pointer;
+
+    .alert-tooltip{
+        display: none;
+        text-align: left;
+    }
+}
+
+.dot:hover{
+
+    .alert-tooltip{
+        display: block;
+    }
+}
+
+.dot-img{
+    padding: 0px;
+}
+.cardAlert{
+    .aria-padding {
+        position: inherit;
+        left: 0px;
+        float: right;
+    }
+    .avatar-img{
+        width: 100%;
+        height: 100%;
+      }
+}
+
+.alert1{
+    min-height: 108px;
+    .create-new {
+        margin-top: 20px;
+    }
+}
+
+.tooltip .arrow::before {
+    border-color: #fff !important;
+}
+
+
+.tooltip-inner {
+    max-width: 200px;
+    padding: .25rem .5rem;
+    color: $primary-text-color !important;
+    text-align: center;
+    background-color: #fff !important;
+    border-radius: .25rem;
+    box-shadow: 0px 0px 8px 0px #dedede;
+}
+
+.alert-tooltip{
+   position: absolute;
+   width: 210px;
+   background-color: #fff !important;
+   color: $primary-text-color !important;
+   padding: 12px 10px;
+   font-size: 13px;
+   top:38px;
+   left: -20px;
+   box-shadow: 0px 0px 8px 0px #dedede;
+   border-radius: .25rem;
+   z-index: 100;
+}
+.tooltip-sort{
+    position: absolute;
+    top: -9px;
+    left: 28px;
+    color: #fff !important;
+    font-size: 23px;
+    opacity: 1 !important;
+}
+
+ .selected-item{
+    border: 1px solid #CFD6E0 !important;
+    background: #CFD6E0 !important;
+    color: #211f1f !important;
+ }
+
+ .cust-datepicker .mat-form-field-infix{
+    border: none !important;
+    font-weight: lighter !important;
+}
+
+
+// Alert Screen Css End ------
+

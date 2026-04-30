@@ -1,0 +1,140 @@
+
+<!-- Login -->
+<div *ngIf="reponseloading" class="loader">
+    <img src="assets/Images/loader.gif" />
+    <span class="loading-message">Please wait...</span>
+</div>
+
+<div class="create-h reg-create-container box-customer-register">
+    <div class="container">
+        <div class="col-12 text-center">
+            <!-- <a _ngcontent-nym-c48="" class="navbar-brand mt-5 mb-3 mr-0" [href]="siteUrl"><img _ngcontent-nym-c48="" onerror="this.src='assets/Images/antunes-digital-brand.png'" class="width-250" src="assets/Images/antunes-digital-brand.png"></a> -->
+            <h1 class="text-dark mb-0" *ngIf="registerType">Registration</h1>
+        </div>
+    </div>
+   <div class="container">
+    <!-- main selection div -->
+    <div class="main-registration-wrap" *ngIf="!registerType">
+    <div class="text-center">
+        <h1 class="text-dark mb-4">Registration</h1>
+        <button type="button"  (click)="corporateRegister()"  class="btn btn-outline-secondary btn-block mb-4">Commercial<i class="fa fa-building sinup_icon" aria-hidden="true"></i></button>
+        <button type="button" (click)="residentialRegister()" class="btn btn-outline-secondary btn-block mb-4">Residential<i class="fa fa-home sinup_icon" aria-hidden="true"></i></button>
+    </div>
+</div>
+    <div class="row sinup corporate-signup pt-3" *ngIf="registerType">
+
+        <div class="col-md-12 ">
+            <div class="box1 box1-white">
+               
+                    <div class="row " *ngIf="isCommercial">
+                        <div class="col-md-12 col-sm-11 mx-auto">
+                            <h3 class="text-theme-color mb-2" *ngIf="currentStep ==1">Step 1 : Company Details</h3>
+                            <!-- <h3 class="text-theme-color mb-2"  *ngIf="currentStep ==2">Step 2 : Store Details</h3> -->
+                            <h3 class="text-theme-color mb-2"  *ngIf="currentStep ==3">Step 2 : Admin User Details</h3>
+                            <h3 class="text-theme-color mb-2"  *ngIf="currentStep ==4">Step 3 : Subscriptions</h3>
+                            <h3 class="text-theme-color mb-2"  *ngIf="currentStep ==5">Step 4 : Billing Address</h3>
+                            <h3 class="text-theme-color mb-2" *ngIf="currentStep ==6">Step 5 : Payment</h3>
+                            <!-- step indicator -->
+                            <ul class="label-prep-progress d-flex mb-5 w-100">
+                                <li class="flex-fill " [ngClass]="{'active':currentStep >=1  }"></li>
+                                <!-- <li class="flex-fill" [ngClass]="{'active':currentStep >=2 }"></li> -->
+                                <li class="flex-fill" [ngClass]="{'active':currentStep >=3 }"></li>
+                                <li class="flex-fill" [ngClass]="{'active':currentStep >=4 }"></li>
+                                <li class="flex-fill" [ngClass]="{'active':currentStep >=5 }"></li>
+                                <li class="flex-fill" [ngClass]="{'active':currentStep >=6 }"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row " *ngIf="isResidential">
+                        <div class="col-md-12 col-sm-11 mx-auto">
+                            <h3 class="text-theme-color mb-2" *ngIf="currentStep ==1">Step 1 : Home Address</h3>
+                            <h3 class="text-theme-color mb-2"  *ngIf="currentStep ==2">Step 2 : User Details</h3>
+                            <h3 class="text-theme-color mb-2"  *ngIf="currentStep ==3">Step 3 : Subscriptions</h3>
+                            <h3 class="text-theme-color mb-2" *ngIf="currentStep ==4">Step 4 : Payment</h3>
+                            <!-- step indicator -->
+                            <ul class="label-prep-progress d-flex mb-5 w-100">
+                                <li class="flex-fill " [ngClass]="{'active':currentStep >=1  }"></li>
+                                <li class="flex-fill" [ngClass]="{'active':currentStep >=2 }"></li>
+                                <li class="flex-fill" [ngClass]="{'active':currentStep >=3 }"></li>
+                                <li class="flex-fill" [ngClass]="{'active':currentStep >=4 }"></li>
+                            </ul>
+                        </div>
+                    </div>
+           
+                    <div class="row" *ngIf="currentStep ==1 && isCommercial ">
+                        <company-details #companyForm  (formSubmitted)="step1Completed($event)">
+                        </company-details>
+                    </div>
+
+                    <div class="row" *ngIf="currentStep ==1 && isResidential ">
+                        <home-details #homeForm  (formSubmitted)="step1Completed($event)">
+                        </home-details>
+                    </div>
+
+                    <div class="row" *ngIf="currentStep ==2 && isCommercial ">
+                                <store-details #storeForm (formSubmitted)="step2Completed($event)">
+                                </store-details>
+                    </div>
+
+                    <div class="row" *ngIf="(currentStep ==3 && isCommercial)||( currentStep ==2 && isResidential)">
+                            <user-details #userForm (formSubmitted)="step3Completed($event)">
+                            </user-details>
+                    </div>
+
+                    <div class="row" *ngIf="(currentStep ==4 && isCommercial ) || (currentStep ==3 && isResidential)">
+                            <subscription-details class="w-100" #subscription (formSubmitted)="step4Completed($event)">
+                            </subscription-details>
+                    </div>
+                    
+                    <div class="row" *ngIf="(currentStep ==5 && isCommercial ) || (currentStep ==4 && isResidential)">
+                        <billing-address  #billingAddressForm  (formSubmitted)="step5Completed($event)">
+                        </billing-address>
+                    </div>
+
+                    <div class="row" *ngIf="(currentStep ==6 && isCommercial ) || (currentStep ==5 && isResidential)">
+                            <subscription-checkout #checkout [subscDetails]="selectedSubscriptionDetails" (formSubmitted)="step6Completed($event)">
+                            </subscription-checkout>
+                </div>
+                <div class="row box-btn-register">
+                    <div class="col-md-12 text-right">
+                        <form name="form" novalidate>
+                            <div class="text-right ">
+                                <button (click)="gotoRegistration()" class="btn btn-tertiary-custom mr-3">CANCEL</button>
+                                <button type="submit" class="btn btn-secondary-custom me-3 width-100"
+                                    [ngClass]="{'d-none': currentStep < 2 }" (click)="gotoPrevStep()">BACK</button>
+                                <button type="submit" class="btn btn-primary-custom width-100 me-3"
+                                    [ngClass]="{'d-none': ((currentStep > 5 && isCommercial) || (currentStep > 4 && isResidential))}" (click)="onSubmit()">NEXT</button>
+                                <button type="submit" class="btn btn-primary-custom me-3"
+                                    [ngClass]="{'d-none': ( (currentStep != 6 && isCommercial) || (currentStep !=5 && isResidential)) }" (click)="onSubmit()">CONFIRM</button>
+                               
+                            </div>
+                        </form>
+                
+                    </div>
+                </div>
+            
+        </div>
+        </div>
+        
+    </div>
+
+    <!-- <div class="row sinup corporate-signup pt-3" [ngClass]="{'d-none': currentStep != 5}">
+       
+            <subscription-checkout #checkout [subscDetails]="selectedSubscriptionDetails" (formSubmitted)="step5Completed($event)">
+            </subscription-checkout>
+      
+    </div> -->
+</div>
+
+</div>
+    <div class="container-fluid box-footer-reg pt-4 pb-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                 Copyright © 2024-2025 <strong><a class="text-dark" href="http://antunes.com"> Antunes digital ™</a>.</strong>
+                Portions Patent Pending. All rights reserved.
+            </div>
+        </div>
+    </div>
+
+

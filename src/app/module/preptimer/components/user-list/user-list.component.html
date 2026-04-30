@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Search Input -->
+        <div class="w-50">
+            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search Users...">
+        </div>
+        <!-- Add Translation Button -->
+        <button class="btn btn-success" routerLink="/preptimer/translation/add"  style="background-color: #1a3668;color:white">
+            <!-- <i class="fas fa-plus"></i>  -->
+            
+            Add User
+        </button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive">
+        <table class="table table-hover border">
+            <thead class="bg-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Modified On</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of filteredTranslations()">
+                    <td>{{ item.firstName}} {{ item.lastName}}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.phonenumber}}</td>
+                    <td>{{ item.modifiedOn | date:'MM/dd/yyyy' }}</td>
+                    <td class="text-center">
+                        <button class="btn btn-sm edit-btn" >
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+ 
+</div>

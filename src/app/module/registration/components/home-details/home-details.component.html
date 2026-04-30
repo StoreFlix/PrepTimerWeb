@@ -1,0 +1,183 @@
+<form class="col-md-12 col-sm-11 mx-auto" name="companyDetailsForm" #detailsForm="ngForm">
+    <div class="form-row">
+
+        <div class="form-group col-md-12">
+            <div class="form-row">
+               
+        
+                <div class="form-group col-md-6">
+                    <label>Name</label>
+                   
+                    <input type="text" name="companyName" [(ngModel)]="companyDetails.name" class="form-control" 
+                     required   #companyName="ngModel" placeholder="Enter Name" />
+        
+                    <div *ngIf="detailsForm.submitted&& companyName.invalid" class="error-text">
+                        <div *ngIf="companyName.errors.required">Company name required</div>
+                    </div>
+                    <div class="error-text" *ngIf="!validName"> Name not available. Please try new one!</div>
+                </div>   
+                <div class="form-group col-md-6">
+                    <label>Address </label>
+                   
+                    <input type="text" name="companyAddress1" [(ngModel)]="companyDetails.address1" class="form-control" 
+                     required #companyAddress1="ngModel" placeholder="Enter Address"/>
+        
+                    <div *ngIf="detailsForm.submitted&& companyAddress1.invalid" class="error-text">
+                        <div *ngIf="companyAddress1.errors.required">Address details are required</div>
+                    </div>
+                </div>
+        
+                <!-- <div class="form-group col-md-6">
+                    <label>Address 2</label>
+                    <input type="text" name="companyAddress2" [(ngModel)]="companyDetails.address2" class="form-control" 
+                     required  #companyAddress2="ngModel" placeholder="Enter Address" />
+                </div> -->
+        
+                <div class="form-group col-md-6">
+                    <label>City</label>
+                  
+                    <input type="text" name="companycity" [(ngModel)]="companyDetails.city" class="form-control" 
+                         required #companycity="ngModel" placeholder="Enter City"/>
+        
+                     <div *ngIf="detailsForm.submitted&& companycity.invalid" class="error-text">
+                        <div *ngIf="companycity.errors.required">City details are required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>State</label>
+                    <select name="companystate" required id="companystate" #companystate="ngModel" class="custom-select custom-select-custom"
+                        [(ngModel)]="companyDetails.state">
+                        <option value="undefined">Select State</option>
+                        <option *ngFor="let c of stateList" [ngValue]="c.subDivisionIsoCode">{{c.name}}</option>
+                    </select>
+                
+                    <div *ngIf="detailsForm.submitted&& companystate.invalid" class="error-text">
+                        <div *ngIf="companystate.errors.required">State details are required</div>
+                    </div>
+                </div> 
+
+                <div class="form-group col-md-6">
+                    <label>Zip Code</label>
+                  
+                    <input type="text" maxlength="5" name="companyzipcode" class="form-control"  [(ngModel)]="companyDetails.zipcode"
+                    (keypress)="allowOnlyNumbers($event)" required #companyzipcode="ngModel" (ngModelChange)="calGeoCode()"  placeholder="Enter Zip Code"/>
+        
+                     <div *ngIf="detailsForm.submitted&& companyzipcode.invalid" class="error-text">
+                        <div *ngIf="companyzipcode.errors.required">ZIP code details are required</div>
+                    </div>
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <label>Country</label>
+                    <select name="companycountry" required id="companycountry"  #companycountry="ngModel" class="custom-select custom-select-custom"
+                         [(ngModel)]="companyDetails.country" (ngModelChange)="countryChanged($event)">
+                         <option value="undefined">Select Country</option>
+                         <option *ngFor="let c of countriesList" [ngValue]="c.iso3">{{c.name}}</option>
+                     </select>
+        
+                     <div *ngIf="detailsForm.submitted&& companycountry.invalid" class="error-text">
+                        <div *ngIf="companycountry.errors.required">Country details are required</div>
+                    </div>
+                </div>
+        
+                
+                
+              
+                
+                <div class="form-group col-md-6">
+                    <label>Phone</label>
+                   
+                    <input type="text" maxlength="10" name="companyphone" class="form-control" [(ngModel)]="companyDetails.phone"
+                    (keypress)="allowOnlyNumbers($event)" required #companyphone="ngModel" placeholder="Enter Contact Number"/>
+        
+                    <div *ngIf="detailsForm.submitted&& companyphone.invalid" class="error-text">
+                        <div *ngIf="companyphone.errors.required">Phone details are required</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Time Zone</label>
+                  
+                    <!-- <input type="text" name="timeZone" class="form-control"  required
+                    placeholder="Select Time Zone" #timeZone="ngModel"  [(ngModel)]="homeMap.timeZone"/> -->
+        
+                    <select name="timeZone" required  #timeZone="ngModel" class="custom-select custom-select-custom"
+                        [(ngModel)]="homeMap.timeZone" >
+                 <option value="undefined">Select Time Zone</option>
+                 <option value="Eastern Standard Time"> Eastern Standard Time </option>
+                 <option value="Central Standard Time"> Central Standard Time </option>
+                 <option value="Mountain Standard Time"> Mountain Standard Time </option>
+                 <option value="Pacific Standard Time"> Pacific Standard Time </option>
+                 <option value="Phoenix Standard Time">Phoenix Standard Time</option>
+                 <option value="India Standard Time"> India Standard Time </option>
+                 <option value="Greenwich Mean Time"> Greenwich Mean Time</option>
+                 <option value="Universal Coordinated Time"> Universal Coordinated Time </option>
+                 <option value="European Central Time"> European Central Time </option>
+                 <option value="Eastern European Time"> Eastern European Time</option>
+                 <option value="(Arabic) Egypt Standard Time">(Arabic) Egypt Standard Time</option>
+                 <option value="Eastern African Time">Eastern African Time</option>
+                 <option value="Middle East Time">Middle East Time</option>
+                 <option value="Near East Time">Near East Time</option>
+                 <option value="Pakistan Lahore Time">Pakistan Lahore Time</option>
+                 <option value="Bangladesh Standard Time">Bangladesh Standard Time</option>
+                 <option value="Vietnam Standard Time">Vietnam Standard Time</option>
+                 <option value="China Taiwan Time">China Taiwan Time</option>
+                 <option value="Japan Standard Time">Japan Standard Time</option>
+                 <option value="Australia Central Time">Australia Central Time</option>
+                 <option value="Australia Eastern Time">Australia Eastern Time</option>
+                 <option value="Solomon Standard Time">Solomon Standard Time</option>
+                 <option value="New Zealand Standard Time">New Zealand Standard Time</option>
+                 <option value="Midway Islands Time">Midway Islands Time</option>
+                 <option value="Hawaii Standard Time">Hawaii Standard Time</option>
+                 <option value="Alaska Standard Time">Alaska Standard Time</option>
+                 <option value="Indiana Eastern Standard Time">Indiana Eastern Standard Time</option>
+                 <option value="Puerto Rico and US Virgin Islands Time">Puerto Rico and US Virgin Islands Time</option>
+                 <option value="Canada Newfoundland Time">Canada Newfoundland Time</option>
+                 <option value="Argentina Standard Time">Argentina Standard Time</option>
+                 <option value="Brazil Eastern Time">Brazil Eastern Time</option>
+                 <option value="Central African Time">Central African Time</option>
+
+             </select>
+                     <div *ngIf="detailsForm.submitted && timeZone.invalid" class="error-text">
+                        <div *ngIf="timeZone.errors.required">Time Zone details are required</div>
+                    </div>
+                </div>
+                  <div class="col-md-12">
+            <div class="form-row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button type="button" (click)="calGeoCode()"   class="btn btn-primary-custom mb-2">CALCULATE GEOCODE</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Latitude</label>
+                       
+                        <input type="text" name="latitude" class="form-control" 
+                         required placeholder="Enter Code" #latitude="ngModel"  [(ngModel)]="homeMap.latitude" (ngModelChange)="latlangChanged()"/>
+                        <div *ngIf="detailsForm.submitted && latitude.invalid" class="error-text">
+                            <div *ngIf="latitude.errors.required">Latitude details are required</div>
+                        </div>
+                    </div>
+            
+                    <div class="form-group mb-0">
+                        <label>Longitude</label>
+                        <input type="text" name="longitude"  class="form-control" 
+                         required placeholder="Enter Code" #longitude="ngModel"  [(ngModel)]="homeMap.longitude" (ngModelChange)="latlangChanged()"/>
+                        <div *ngIf="detailsForm.submitted && longitude.invalid" class="error-text">
+                            <div *ngIf="longitude.errors.required">Longitude details are required</div>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-6">
+                <div class="box-map">
+                    <div id="mapquestdesign" #mapContainer  style="min-height:200px;width:100%"></div> 
+                </div>
+               </div>
+            </div>
+        </div>
+            </div>
+        </div>
+     
+       
+    </div>
+
+</form>

@@ -1,0 +1,18 @@
+.dropdown-menu {
+  max-height: 200px;       /* limit height */
+  overflow-y: auto;        /* scroll when too many categories */
+}
+
+.dropdown-menu .form-check {
+  padding: 4px 10px;       /* proper spacing */
+}
+
+.dropdown-toggle::after {
+  float: right;            /* caret alignment */
+  margin-top: 8px;
+}
+
+.form-check-input:checked {
+  background-color: #1a3668;
+  border-color: #1a3668;
+}
