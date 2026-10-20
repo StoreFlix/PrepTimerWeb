@@ -59,11 +59,12 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   checkValidCompanyName() {
-    this.regService.setLoader(true);
-    this.regService.checkCustomerCompanyName(this.companyDetails.name).subscribe((res) => {
-      this.validName = !res;
-      this.regService.setLoader(false);
-    })
+    // this.regService.setLoader(true);
+    // this.regService.checkCustomerCompanyName(this.companyDetails.name).subscribe((res) => {
+    //   this.validName = !res;
+    //   this.regService.setLoader(false);
+    // })
+    return true;
   }
 
   uploadLogo(files) {

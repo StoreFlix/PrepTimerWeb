@@ -13,6 +13,8 @@ L.mapquest.key = environment.mapquestKey;
 })
 
 export class RegistrationService {
+  // Must match the Name column width of dbo.CompanyDetails / dbo.StoreDetails (SQL error 8152 otherwise)
+  readonly nameMaxLength = 50;
   countryStateList = new BehaviorSubject<any>([]);
   timezoneList = new BehaviorSubject<any>([]);
   currentStep = new BehaviorSubject<number>(1);
@@ -374,6 +376,10 @@ export class RegistrationService {
     this.customerDetails.next(testCustomer);
   }
 
+  limitLength(value:string, maxLength:number){
+    return value ? value.trim().substring(0, maxLength).trim() : value;
+  }
+
   setActivateSubscObject(invoicRequest:SubscriptionRequest[],PaymentAmount:any){
 
     let customerDetails = this.CopyToCustDetails();
@@ -391,6 +397,10 @@ export class RegistrationService {
      storeDetails = ( customerDetails.storeDetails || new RegisterStore());
     else
      storeDetails = this.setStoreObjectFromCompany(customerDetails.companyDetails)
+
+    // Names can also come from GetCompanyPaymentAddress, which bypasses the form's maxlength
+    companyDetails.name = this.limitLength(companyDetails.name, this.nameMaxLength);
+    storeDetails.name = this.limitLength(storeDetails.name, this.nameMaxLength);
 
     regCustomerReq.registerStore.push(storeDetails);
 

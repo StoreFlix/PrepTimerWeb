@@ -57,7 +57,7 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit() {
+ngOnInit() {
 
     // Register URL-change listener ONCE — previous code re-registered on every ActivationEnd,
     // creating a new listener per navigation and leaking memory.

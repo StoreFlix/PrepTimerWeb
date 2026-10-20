@@ -6,12 +6,15 @@
         <!-- Header -->
         <div class="card-header text-center" style="background-color: #1a3668; color: white">
           <h4 class="mb-0" style="color:white !important">
-            {{ isEditMode ? 'Edit Item' : 'New Item' }}
+            {{ isDefault ? 'View Item' : isEditMode ? 'Edit Item' : 'New Item' }}
           </h4>
         </div>
 
         <!-- Body -->
         <div class="card-body">
+          <div *ngIf="isDefault" class="alert alert-warning mb-3">
+            Default items are read-only and cannot be modified.
+          </div>
           <form [formGroup]="itemForm" *ngIf="itemForm">
 
             <!-- 1. Icon Upload -->
@@ -92,7 +95,7 @@
             <!-- Footer Buttons -->
             <div class="d-flex justify-content-between">
               <a routerLink="/preptimer/condiments" class="btn btn-secondary">Back to List</a>
-              <button type="submit" (click)="saveItem()" class="btn text-white" style="background-color:#1a3668;">
+              <button *ngIf="!isDefault" type="submit" (click)="saveItem()" class="btn text-white" style="background-color:#1a3668;">
                 Save
               </button>
             </div>

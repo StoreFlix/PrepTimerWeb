@@ -1,0 +1,79 @@
+<div class="container mt-2">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <!-- Loading -->
+      <div *ngIf="loading" class="d-flex justify-content-center align-items-center" style="height: 300px;">
+        <div class="spinner-border" style="color:#1A3668; width:3rem; height:3rem;" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <div *ngIf="!loading && item" class="card shadow-lg rounded-3">
+
+        <!-- Header -->
+        <div class="card-header text-center" style="background-color:#1A3668; color:white;">
+          <h4 class="mb-0" style="color:white !important;">View Item</h4>
+        </div>
+
+        <!-- Warning Banner -->
+        <div class="alert alert-warning mb-0 rounded-0 d-flex align-items-center gap-2" role="alert">
+          <i class="fas fa-lock"></i>
+          <span>
+            <strong>Read-only:</strong> Default items cannot be edited. Please
+            <a routerLink="/preptimer/condiments/add" class="alert-link">create a new item</a>
+            if you need a custom version.
+          </span>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body">
+
+          <!-- Icon -->
+          <div class="mb-4 d-flex align-items-center gap-3">
+            <div class="view-icon-box">
+              <img [src]="item.iconUrl" alt="Item Icon" width="56" height="56" class="rounded border p-1" />
+            </div>
+            <div>
+              <div class="text-muted small">Item Icon</div>
+            </div>
+          </div>
+
+          <!-- Item Name (Translations) -->
+          <div class="mb-4" *ngIf="item.translations && item.translations.length > 0">
+            <label class="form-label fw-semibold text-muted">Item Names</label>
+            <div class="row g-2">
+              <div class="col-md-6" *ngFor="let t of item.translations">
+                <div class="border rounded px-3 py-2" style="background:#f8f9fa;">
+                  <div class="text-muted small mb-1">{{ t.locale | uppercase }}</div>
+                  <div class="fw-medium">{{ t.itemName || '—' }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duration -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold text-muted">Duration</label>
+            <div class="border rounded px-3 py-2" style="background:#f8f9fa; max-width:200px;">
+              <i class="fas fa-clock me-2 text-secondary"></i>
+              <span class="fw-medium">{{ formatDuration(item.duration) }}</span>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <a routerLink="/preptimer/condiments" class="btn btn-secondary">
+              <i class="fas fa-arrow-left me-1"></i> Back to List
+            </a>
+            <a routerLink="/preptimer/condiments/add" class="btn text-white" style="background-color:#1A3668;">
+              <i class="fas fa-plus me-1"></i> Create New Item
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

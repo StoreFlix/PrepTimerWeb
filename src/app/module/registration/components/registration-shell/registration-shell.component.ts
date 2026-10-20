@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./registration-shell.component.scss']
 })
 export class RegistrationShellComponent {
-  currentYear = new Date().getFullYear();
 }

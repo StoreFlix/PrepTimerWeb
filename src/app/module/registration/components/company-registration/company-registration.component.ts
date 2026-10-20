@@ -12,11 +12,9 @@ import { environment } from 'src/environments/environment';
 })
 export class CompanyRegistrationComponent implements OnInit {
 
-  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   currentStep:number =1;
   currentParamTab:number = 1
   reponseloading:boolean = false;
-  map: google.maps.Map;
   latitude:any = 20.5937;
   longitude:any =78.9629;
   isCommercial:boolean = true;

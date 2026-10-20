@@ -6,7 +6,7 @@
         <div class="mb-3 col-md-6">
             <label class="mb-1">Name</label>
            
-            <input type="text" name="storeName" class="form-control" [(ngModel)]="storeDetails.name"
+            <input type="text" name="storeName" maxlength="50" class="form-control" [(ngModel)]="storeDetails.name"
               #storeName="ngModel" placeholder="Store Name"/>
 
             <div *ngIf="detailsForm.submitted && storeName.invalid" class="error-text">

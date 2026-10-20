@@ -6,6 +6,7 @@ import { CondimentListComponent } from './components/condiment-list/condiment-li
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AddCondimentComponent } from './components/add-condiment/add-condiment.component';
+import { ViewCondimentComponent } from './components/view-condiment/view-condiment.component';
 
 const routes: Routes = [
   {path:'translations',component:TransaltionListComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'condiments',component:CondimentListComponent},
   {path:'condiments/add',component:AddCondimentComponent},
   {path:'condiments/edit/:id',component:AddCondimentComponent},
+  {path:'condiments/view/:id',component:ViewCondimentComponent},
 
   {path:'categories',component:CategoryListComponent},
   {path:'users',component:UserListComponent},

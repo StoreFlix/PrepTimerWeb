@@ -249,4 +249,8 @@ toggleSelectAll(event: Event) {
   this.router.navigate([`/preptimer/condiments/edit`, id]);
 }
 
+onView(id: number) {
+  this.router.navigate([`/preptimer/condiments/view`, id]);
+}
+
 }

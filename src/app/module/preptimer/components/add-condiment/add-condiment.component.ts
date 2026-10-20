@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AddCondimentComponent implements OnInit {
   itemForm!: FormGroup;
   isEditMode = false;
+  isDefault = false;
   itemId: number | null = null;
   
   categories: any[] = [];
@@ -69,6 +70,11 @@ export class AddCondimentComponent implements OnInit {
    private loadItem(id: number): void {
     this.itemService.getItemDetailsById(id).subscribe(item => {
       if (!item) return;
+
+      if (item.isDefault) {
+        this.isDefault = true;
+        this.itemForm.disable();
+      }
 
       this.itemForm.patchValue({
         itemId: item.itemId,
