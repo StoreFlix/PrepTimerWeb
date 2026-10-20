@@ -14,7 +14,9 @@ import Swal from 'sweetalert2';
 export class AuthComponent implements OnInit {
 
   @ViewChild('loginForm')loginForm:FormGroupDirective;
-  reponseloading:boolean = false;
+  reponseloading: boolean = false;
+  showPassword:   boolean = false;
+  currentYear = new Date().getFullYear();
   public access_Token: string;
   public routeChoice:string;
   loginModel:LoginModel =new LoginModel();

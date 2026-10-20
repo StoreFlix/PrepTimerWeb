@@ -7,4 +7,7 @@ export interface UserModel {
     lastName: string;
     password: string;
     phoneNumber: string;
+    isActive?: boolean;
+    createdOn?: string;
+    modifiedOn?: string;
   }

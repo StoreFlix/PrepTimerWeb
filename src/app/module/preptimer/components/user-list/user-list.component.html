@@ -1,15 +1,80 @@
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <!-- Search Input -->
-        <div class="w-50">
-            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search Users...">
+<!-- Add / Edit User Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-3 shadow-lg border-0">
+            <form (ngSubmit)="saveUser()" #userForm="ngForm">
+                <div class="modal-header" style="background-color: #1A3668;padding:0.6rem;color:white">
+                    <h3 class="modal-title" style="color: white !important;" id="userModalLabel">
+                        {{ isEditMode ? 'Edit' : 'Add' }} User
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body px-4 py-3">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">First Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="firstName"
+                                [(ngModel)]="selectedUser.firstName" required maxlength="100"
+                                placeholder="Enter first name" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Last Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="lastName"
+                                [(ngModel)]="selectedUser.lastName" required maxlength="100"
+                                placeholder="Enter last name" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" name="email"
+                                [(ngModel)]="selectedUser.email" required maxlength="200"
+                                placeholder="Enter email" />
+                        </div>
+
+                        <div class="col-md-6" *ngIf="!isEditMode">
+                            <label class="form-label fw-semibold">Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" name="password"
+                                [(ngModel)]="selectedUser.password" [required]="!isEditMode" maxlength="50"
+                                placeholder="Enter password" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer px-4 py-3">
+                    <button type="submit" class="btn"
+                        style="background-color: #1A3668;color:white !important"
+                        [disabled]="userForm.invalid">
+                        <i class="fas fa-save me-1"></i> Save
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </form>
         </div>
-        <!-- Add Translation Button -->
-        <button class="btn btn-success" routerLink="/preptimer/translation/add"  style="background-color: #1a3668;color:white">
-            <!-- <i class="fas fa-plus"></i>  -->
-            
-            Add User
-        </button>
+    </div>
+</div>
+
+<div class="container mt-4">
+
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h4 class="page-title mb-1" style="color:#1A3668; font-size:1.5rem; font-weight:500;">
+                User Management
+            </h4>
+            <p class="page-subtext text-muted mb-0" style="font-size:0.8rem;">
+                Manage users and their access permissions
+            </p>
+        </div>
+        <div>
+            <button class="btn" style="background-color:#1A3668; color:white;" (click)="openAddUser()">
+                <i class="fas fa-plus"></i> Add User
+            </button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <input type="text" class="form-control w-50" [(ngModel)]="searchText" placeholder="Search users...">
     </div>
 
     <!-- Table -->
@@ -19,30 +84,28 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Phone</th>
                     <th>Modified On</th>
                     <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of filteredTranslations()">
-                    <td>{{ item.firstName}} {{ item.lastName}}</td>
+                <tr *ngFor="let item of filteredUsers()">
+                    <td>{{ item.firstName }} {{ item.lastName }}</td>
                     <td>{{ item.email }}</td>
-                    <td>{{ item.phonenumber}}</td>
                     <td>{{ item.modifiedOn | date:'MM/dd/yyyy' }}</td>
                     <td class="text-center">
-                        <button class="btn btn-sm edit-btn" >
+                        <button class="btn btn-sm edit-btn" (click)="openEditUser(item)">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button class="btn btn-sm delete-btn">
+                        <button class="btn btn-sm delete-btn" (click)="deleteUser(item.userId)">
                             <i class="fas fa-trash"></i>
                         </button>
-                        
                     </td>
+                </tr>
+                <tr *ngIf="filteredUsers().length === 0">
+                    <td colspan="4" class="text-center text-muted py-4">No users found</td>
                 </tr>
             </tbody>
         </table>
     </div>
-
- 
 </div>

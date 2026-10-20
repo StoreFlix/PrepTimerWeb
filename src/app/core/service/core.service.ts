@@ -28,4 +28,12 @@ export class CoreService {
     return this._http.post<any>(url,loginModel);
   }
 
+  forgotPassword(email: string): Observable<{ message: string }> {
+    return this._http.post<{ message: string }>(this._baseUrl + 'api/user/forgot-password', { email });
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<{ message: string }> {
+    return this._http.post<{ message: string }>(this._baseUrl + 'api/user/reset-password', { token, newPassword });
+  }
+
 }

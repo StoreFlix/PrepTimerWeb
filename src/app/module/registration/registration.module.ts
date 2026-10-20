@@ -21,9 +21,10 @@ import { MySubscriptionsComponent } from './components/my-subscriptions/my-subsc
 import { HomeDetailsComponent } from './components/home-details/home-details.component';
 import { EditSubscriptionsComponent } from './components/edit-subscriptions/edit-subscriptions.component';
 import { BillingAddressComponent } from "./components/billing-address/billing-address.component";
+import { RegistrationShellComponent } from './components/registration-shell/registration-shell.component';
 
 @NgModule({
-  declarations: [CompanyRegistrationComponent, CompanyDetailsComponent, StoreDetailsComponent, UserDetailsComponent, SubscriptionDetailsComponent, SubscriptionCheckoutComponent, MySubscriptionsComponent, HomeDetailsComponent, EditSubscriptionsComponent,BillingAddressComponent],
+  declarations: [RegistrationShellComponent, CompanyRegistrationComponent, CompanyDetailsComponent, StoreDetailsComponent, UserDetailsComponent, SubscriptionDetailsComponent, SubscriptionCheckoutComponent, MySubscriptionsComponent, HomeDetailsComponent, EditSubscriptionsComponent, BillingAddressComponent],
   imports: [
     CommonModule,
     SharedModule,

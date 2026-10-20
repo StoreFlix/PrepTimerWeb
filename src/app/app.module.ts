@@ -12,6 +12,8 @@ import { BreadcrumbComponent } from './core/layout/breadcrumb/breadcrumb.compone
 
 import { HttpErrorInterceptor } from './shared/http-error.interceptor';
 import { AuthComponent } from './auth/auth.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { SharedModule } from './shared/shared.module';
 import { PreptimerHeaderComponent } from './core/layout/preptimer-header/preptimer-header.component';
 import { PreptimerFooterComponent } from './core/layout/preptimer-footer/preptimer-footer.component';
@@ -27,6 +29,8 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     NavMenuComponent,
     BreadcrumbComponent,
     AuthComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
     PreptimerHeaderComponent,
     PreptimerFooterComponent
   ],

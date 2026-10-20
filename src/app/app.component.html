@@ -1,25 +1,10 @@
 <div class="page-container">
 
-
-  <preptimer-header *ngIf="showHeaderFooter"></preptimer-header>
-
-  <app-nav-menu *ngIf="isIndependant">
-  </app-nav-menu>
-
-  <app-breadcrumb [headerData]="headerDataResponse" [url]="currentUrl" *ngIf="isIndependant"></app-breadcrumb>
+  <app-nav-menu [headerData]="headerDataResponse" *ngIf="isIndependant"></app-nav-menu>
 
   <div class="page-content">
     <router-outlet></router-outlet>
   </div>
 
-  <!-- <footer class="main-footer position-relative" *ngIf="isIndependant">
-    <div class="container-fluid">
-      <div class="sticky-ftr-logo position-absolute"><img src="/assets/Images/antunes-digital-brand-dark.png"
-          class="img-responsive mainlogostorelynk"></div>
-      <strong> Copyright © 2024-2025 <a href="http://antunes.com"> Antunes digital ™</a>.</strong> Portions Patent
-      Pending. All rights reserved.
-    </div>
-  </footer> -->
-  <preptimer-footer *ngIf="showHeaderFooter"></preptimer-footer>
 
 </div>

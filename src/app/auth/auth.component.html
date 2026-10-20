@@ -1,120 +1,149 @@
-
 <div *ngIf="reponseloading" class="loader">
-    <img src="assets/Images/loader.gif" />
-    <span class="loading-message">Please wait...</span>
+  <img src="assets/Images/loader.gif" />
+  <span class="loading-message">Please wait...</span>
 </div>
 
-<div class="parent-container">
+<div class="auth-root">
 
+  <!-- ══ NAVBAR ════════════════════════════════════════════════════════ -->
+  <nav class="auth-navbar">
+    <div class="nav-brand">
+      <img src="/assets/Images/PrepTimerV2LogoTrans.png" class="nav-logo" alt="Logo">
+      <div class="nav-brand-text">
+        <span class="nav-title">Antunes Prep Timer</span>
+        <span class="nav-subtitle">Restaurant Operations Platform</span>
+      </div>
+    </div>
+  </nav>
 
+  <!-- ══ BODY ══════════════════════════════════════════════════════════ -->
+  <main class="auth-body">
 
-<div class="main-section">
+    <!-- Left: Hero -->
+    <div class="hero-section">
+      <div class="hero-dots"></div>
 
-    <div class="left-section">
-        <div class="left-section-content">
-            <div style="font-weight: 600;">OPTIMIZE PREP LINE EFFICIENCY WITH THE ANTUNES PREP TIMER APP V2.0</div>
+      <h1 class="hero-heading">Optimize Your Prep Line Efficiency</h1>
+      <div class="hero-accent-bar"></div>
 
-            <div style="margin-top: 10px;">Register your new account <a [routerLink]="['/registration']">here.</a></div>
-            <div style="margin-top: 10px;">Then download the Antunes Prep Timer V2.0 App from the App Store or
-                Google Play Store.</div>
-    
-            <div style="margin-top: 36px;font-weight: 600">ANTUNES PREP TIMER APP V2.0</div>
-    
-            <ul class="tick-list">
-                <li>Maximize food safety</li>
-                <li>Reduce waste and help control costs</li>
-                <li>Precisely monitor hold times for ingredients and condiments</li>
-            </ul>
+      <p class="hero-desc">
+        Manage Prep Table Timers from any mobile device. Monitor hold times,
+        ensure food safety, and eliminate costly waste — all on one platform.
+      </p>
 
-            <div class="store-icons">
-                <!-- iOS App Store -->
-                <a href="https://apps.apple.com/us/app/antunes-prep-timer-v2-0/id6738274300" target="_blank">
-                    <img src="assets/Images/AppStore.svg" alt="Download on the App Store">
-                </a>
-                <!-- Android Play Store -->
-                <a href="https://play.google.com/store/apps/details?id=com.antunes.preptimer" target="_blank">
-                    <img src="assets/Images/PlayStore.png" alt="Get it on Google Play" height="40" width="112">
-                </a>
-            </div>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-icon-wrap"><i class="fa fa-shield"></i></div>
+          <div class="feature-text">
+            <span class="feature-title">Maximize food safety</span>
+            <span class="feature-desc">Ensure compliance and protect your customers</span>
+          </div>
         </div>
-        
+        <div class="feature-item">
+          <div class="feature-icon-wrap"><i class="fa fa-bar-chart"></i></div>
+          <div class="feature-text">
+            <span class="feature-title">Reduce waste &amp; control costs</span>
+            <span class="feature-desc">Minimize waste and improve profitability</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-wrap"><i class="fa fa-clock-o"></i></div>
+          <div class="feature-text">
+            <span class="feature-title">Monitor hold times precisely</span>
+            <span class="feature-desc">Real-time alerts and accurate tracking</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-wrap"><i class="fa fa-globe"></i></div>
+          <div class="feature-text">
+            <span class="feature-title">Available in multiple languages</span>
+            <span class="feature-desc">English, Spanish &amp; French supported</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-badges">
+        <a href="https://apps.apple.com/us/app/antunes-prep-timer-v2-0/id6738274300"
+           target="_blank" class="store-link">
+          <img src="assets/Images/AppStore.svg" alt="Download on the App Store">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.antunes.preptimer"
+           target="_blank" class="store-link">
+          <img src="assets/Images/PlayStore.png" alt="Get it on Google Play">
+        </a>
+      </div>
     </div>
 
-    <div class="login-box right-section">
+    <!-- Right: Login card -->
+    <div class="login-section">
+      <div class="login-card">
 
-        
-        <!-- /.login-logo -->
-        <!-- <div class="login-logo">
-                <a href="javascript:void(0);">
-                    <img src="/assets/Images/antunes-digital-brand.png" class="img-responsive"></a>
-            </div> -->
-        <div class="login-box-body" style="margin-top: 50px;">
-            
-            <div class="text-center login-text-heading">
-                <h4>
-                    New user? Register <a [routerLink]="['/registration']">here</a>
-                </h4>
-    
-            </div>
-    
-            
-            <div class="error login-box-msg" id="invalid" style="color: red;"></div>
-            <form enctype="application/x-www-form-urlencoded" name="login" target="_self" class="" id="formLogin" #loginForm="ngForm"> 
-                <div class="form-group has-feedback">
-                    <input type="text" class="form-control validate[required]" name="email" 
-                        placeholder="Enter your email" required [(ngModel)]="loginModel.userDetails.email" #email="ngModel">
-                    <span class="fa fa-user-o form-control-feedback"></span>
-                    <div *ngIf="loginForm.submitted && email.invalid" class="error-text">
-                        <div *ngIf="email.errors.required">Email is required</div>
-                    </div>
-                </div>
-                <div class="form-group has-feedback margin-bottom-0">
-                    <input type="password" class="form-control validate[required]" id="password" placeholder="Enter your password" 
-                    name="password" #password="ngModel" required [(ngModel)]="loginModel.userDetails.password">
-                    <span class="fa fa-unlock-alt  form-control-feedback"></span>
-                    <div *ngIf="loginForm.submitted && password.invalid" class="error-text">
-                        <div *ngIf="password.errors.required">Password is required</div>
-                    </div>
-                </div>
-                <div class="row">
-                    
-                    <!-- /.col -->
-                    <div class="col-xs-12">
-                        <!-- <a class="forgot-password" href="/forgot_password.aspx">Forgot your password?</a> -->
-                        <button type="button" (click)="SubmitForm()" class="btn btn-primary btn-block btn-flat">Login</button>
-                    </div>
-                    <!-- /.col -->
-                    <!-- <div class="col-xs-12">
-                        <div class="form-group text-center text-muted content-divider">
-                            <span class="px-2 text-black">Don't have an account?</span>
-                        </div>
-                        <a class="btn btn-secondary btn-block btn-flat" [routerLink]="['/registration']" >Register</a>
-                    </div> -->
-                </div>
-            </form>
-    
+        <div class="login-card-header">
+          <h2>Welcome back</h2>
+          <p>Sign in to your account to continue</p>
         </div>
+
+        <div id="invalid" class="error-banner"></div>
+
+        <form enctype="application/x-www-form-urlencoded"
+              name="login" target="_self" id="formLogin" #loginForm="ngForm">
+
+          <div class="field-wrap">
+            <label for="emailInput">Email address</label>
+            <div class="input-row">
+              <i class="fa fa-envelope-o field-icon"></i>
+              <input type="text" id="emailInput" class="field-input"
+                     name="email" placeholder="Enter your email"
+                     required [(ngModel)]="loginModel.userDetails.email" #email="ngModel">
+            </div>
+            <span *ngIf="loginForm.submitted && email.errors?.required" class="field-error">
+              Email is required
+            </span>
+          </div>
+
+          <div class="field-wrap">
+            <label for="passwordInput">Password</label>
+            <div class="input-row">
+              <i class="fa fa-lock field-icon"></i>
+              <input [type]="showPassword ? 'text' : 'password'" id="passwordInput"
+                     class="field-input field-input--pad-right"
+                     name="password" placeholder="Enter your password"
+                     required [(ngModel)]="loginModel.userDetails.password" #password="ngModel">
+              <button type="button" class="eye-toggle" (click)="showPassword = !showPassword"
+                      [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+                <i [class]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </div>
+            <span *ngIf="loginForm.submitted && password.errors?.required" class="field-error">
+              Password is required
+            </span>
+          </div>
+
+          <div class="forgot-row">
+            <a [routerLink]="['/forgot-password']" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <button type="button" class="btn-signin" (click)="SubmitForm()">Sign In</button>
+
+        </form>
+
+        <div class="card-divider"><span>OR</span></div>
+
+        <a [routerLink]="['/registration']" class="btn-register">Create an account</a>
+
+        <div class="security-badge">
+          <i class="fa fa-shield"></i>
+          <span>Your data is secure and encrypted</span>
+        </div>
+
+      </div>
     </div>
 
-</div>
+  </main>
 
-<div class="footer-section">
-    <div style="font-weight: 600;">ABOUT</div>
-    
-        <div style="font-size: 11px; line-height: 1.3; margin-top: 5px;">
-        The Antunes Prep Timer App V2.0 allows operators to manage their Prep Table Timers from a
-        mobile device. Monitor hold times for a variety of prep table items on the, easy-to-use and
-        customizable, Prep Table Timer. Assure food safety, reduced expensive food waste and manage the
-        prep table all on the same platform.
-        </div>
-        <div style="font-size: 11px;">
-            The Antunes Prep Timer App V2.0 supports English, Spanish, French and is available for apple and
-            android users.
-        </div>
-    
-</div>
+  <!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+  <footer class="auth-footer">
+    <p class="footer-copy">© 2024–{{ currentYear }} Antunes Digital™. All rights reserved.</p>
+  </footer>
 
 </div>
-
-
-

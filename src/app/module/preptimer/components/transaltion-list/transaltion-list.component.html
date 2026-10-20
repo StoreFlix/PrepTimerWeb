@@ -1,116 +1,27 @@
-<!-- <div class="container create-h position-relative">
-    <div class="row ml-5">
-        <div class="form-group col create-sm">
-            <ul class="nnav navbar-nav navbar-right float-right">
-                <li>
-                    <a [routerLink]="['/preptimer/translation/add']" class="btn btn-sm btn-create" routerLinkActive="active">Add Translation</a>
-                </li>
-            </ul>
-        </div>
-        <div class="form-group col-lg-8 pr-0 has-search">
-            <span class="fa fa-search form-control-feedback"></span>
-            <div class="search-text">
-                <input type="text"  #searchText class="form-control" placeholder="Search" />
-            </div>
-        </div>
-       
-        <div class="form-group col create-lg">
-            <ul class="nav navbar-nav navbar-right float-right">
-                <li>
-                    <a [routerLink]="['/preptimer/translation/add']" class="btn btn-sm btn-create" routerLinkActive="active">Add Translation</a>
-
-                </li>
-            </ul>
-            
-        </div>
-    </div>
-    <div class="row  mt-5 category-list">
-        <table  mdbTable #tableData class="z-depth-1 table table-striped table-hover">
-            <thead class="thead-dark">
-              <tr>
-                    <th>Name</th>
-                    <th>Locale</th>
-                    <th>File</th>
-                    <th>Modified On</th>
-                    <th></th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>English</td>
-                    <td>en</td>
-                    <td><a href="https://slbackupstorage.blob.core.windows.net/storelynk/PrepTimer/Translations/en.json">File</a></td>
-                    <td>03/02/2025</td>
-                    <td style="width:175px;">
-                        <button class="btn btn-primary btn-sm " routerlink="preptimer/addtranslation">Edit</button>
-                        <button  class="btn btn-danger btn-sm">Delete</button>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>English</td>
-                    <td>en</td>
-                    <td><a href="https://slbackupstorage.blob.core.windows.net/storelynk/PrepTimer/Translations/en.json">File</a></td>
-                    <td>03/02/2025</td>
-                    <td style="width:175px;">
-                        <button class="btn btn-primary btn-sm">Edit</button>
-                        <button  class="btn btn-danger btn-sm">Delete</button>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>English</td>
-                    <td>en</td>
-                    <td><a href="https://slbackupstorage.blob.core.windows.net/storelynk/PrepTimer/Translations/en.json">File</a></td>
-                    <td>03/02/2025</td>
-                    <td style="width:175px;">
-                        <button class="btn btn-primary btn-sm">Edit</button>
-                        <button  class="btn btn-danger btn-sm">Delete</button>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>English</td>
-                    <td>en</td>
-                    <td><a href="https://slbackupstorage.blob.core.windows.net/storelynk/PrepTimer/Translations/en.json">File</a></td>
-                    <td>03/02/2025</td>
-                    <td style="width:175px;">
-                        <button class="btn btn-primary btn-sm">Edit</button>
-                        <button  class="btn btn-danger btn-sm">Delete</button>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>English</td>
-                    <td>en</td>
-                    <td><a href="https://slbackupstorage.blob.core.windows.net/storelynk/PrepTimer/Translations/en.json">File</a></td>
-                    <td>03/02/2025</td>
-                    <td style="width:175px;">
-                        <button class="btn btn-primary btn-sm">Edit</button>
-                        <button  class="btn btn-danger btn-sm">Delete</button>
-                    </td>
-
-                </tr>
-              
-            </tbody>
-          </table>
-    </div>
-</div> -->
 <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <!-- Search Input -->
-        <div class="w-50">
-            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search translations...">
+
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h4 class="page-title mb-1" style="color:#1A3668; font-size:1.5rem; font-weight:500;">
+                Translation Management
+            </h4>
+            <p class="page-subtext text-muted mb-0" style="font-size:0.8rem;">
+                Manage language translations for the Prep Timer app
+            </p>
         </div>
-        <!-- Add Translation Button -->
-        <button class="btn btn-success" routerLink="/preptimer/translation/add"  style="background-color: #1a3668;color:white">
-            <!-- <i class="fas fa-plus"></i>  -->
-            
-            Add Translation
-        </button>
+        <div>
+            <button class="btn" style="background-color:#1A3668; color:white;"
+                    routerLink="/preptimer/translation/add">
+                <i class="fas fa-plus"></i> Add Translation
+            </button>
+        </div>
     </div>
 
-    <!-- Table -->
+    <div class="mb-3">
+        <input type="text" class="form-control w-50" [(ngModel)]="searchText"
+               placeholder="Search translations...">
+    </div>
+
     <div class="table-responsive">
         <table class="table table-hover border">
             <thead class="bg-light">
@@ -126,7 +37,11 @@
                 <tr *ngFor="let item of filteredTranslations()">
                     <td>{{ item.name }}</td>
                     <td>{{ item.locale }}</td>
-                    <td><a [href]="item.filePath" download target="_blank" class="text-primary"> <i class="fas fa-file-alt" style="color:#1a3668"></i></a></td>
+                    <td>
+                        <a [href]="item.filePath" download target="_blank">
+                            <i class="fas fa-file-alt" style="color:#1A3668"></i>
+                        </a>
+                    </td>
                     <td>{{ item.modifiedOn | date:'MM/dd/yyyy' }}</td>
                     <td class="text-center">
                         <button class="btn btn-sm edit-btn" (click)="onEdit(item.id)">
@@ -135,11 +50,13 @@
                         <button class="btn btn-sm delete-btn" (click)="onDelete(item.id)">
                             <i class="fas fa-trash"></i>
                         </button>
-                        
                     </td>
+                </tr>
+                <tr *ngIf="filteredTranslations().length === 0">
+                    <td colspan="5" class="text-center text-muted py-4">No translations found</td>
                 </tr>
             </tbody>
         </table>
     </div>
-</div>
 
+</div>

@@ -7,7 +7,6 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "postinstall": "ngcc",
     "e2e": "ng e2e",
     "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/AntunesRPT/stats-es2015.json"
   },
@@ -26,7 +25,6 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@popperjs/core": "^2.11.8",
-    "@types/googlemaps": "^3.43.3",
     "angular-bootstrap-md": "^15.0.0",
     "angular-ng-autocomplete": "^2.0.12",
     "angular-sweetalert-2": "^1.0.1",
@@ -48,7 +46,6 @@
     "rxjs": "~7.8.1",
     "sweetalert2": "^11.12.4",
     "tslib": "^2.6.3",
-    "webdatarocks": "^1.4.9",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
@@ -57,9 +54,7 @@
     "@angular/compiler-cli": "~18.1.4",
     "@angular/language-service": "~18.1.4",
     "@types/jasmine": "~5.1.4",
-    "@types/jasminewd2": "~2.0.13",
     "@types/node": "^22.2.0",
-    "codelyzer": "^6.0.2",
     "jasmine-core": "~5.2.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.4",
@@ -67,9 +62,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "protractor": "~5.4.3",
     "ts-node": "~10.9.2",
-    "tslint": "~6.1.0",
     "typescript": "~5.5.4",
     "webpack-bundle-analyzer": "^4.10.2"
   }
