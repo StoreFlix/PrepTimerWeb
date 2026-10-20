@@ -71,7 +71,8 @@ export class AddCondimentComponent implements OnInit {
     this.itemService.getItemDetailsById(id).subscribe(item => {
       if (!item) return;
 
-      if (item.isDefault) {
+      // Shared items (owned by Antunes) are read-only for other companies
+      if (item.isDefault || !item.canEdit) {
         this.isDefault = true;
         this.itemForm.disable();
       }

@@ -34,6 +34,8 @@ export class CondimentListComponent  {
 items: any[] = [];
 defaultItems: any[] = [];
 customItems: any[] = [];
+hiddenItems: any[] = [];
+showHidden = false;
 categories: any[] = [];
 itemModel: any = {
   itemId: 0,
@@ -57,7 +59,12 @@ constructor(private itemService: ItemService, private router:Router) {}
 
 ngOnInit(): void {
   this.loadItems();
+  this.loadHiddenItems();
   this.loadCategories();
+}
+
+loadHiddenItems() {
+  this.itemService.getHiddenItems().subscribe(data => this.hiddenItems = data);
 }
 
 loadItems() {
@@ -119,6 +126,34 @@ deleteItem(id: any): void {
             });
           }
         });
+}
+
+hideItem(item: any): void {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: `"${item.itemName}" will be deleted. You can restore it later from Deleted Items.`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.itemService.hideItem(item.itemId).subscribe(() => {
+        this.loadItems();
+        this.loadHiddenItems();
+        Swal.fire('Deleted!', 'Item has been deleted.', 'success');
+      });
+    }
+  });
+}
+
+restoreItem(item: any): void {
+  this.itemService.restoreItem(item.itemId).subscribe(() => {
+    this.loadItems();
+    this.loadHiddenItems();
+    Swal.fire('Restored!', `"${item.itemName}" is visible again.`, 'success');
+  });
 }
 
 saveItem() {

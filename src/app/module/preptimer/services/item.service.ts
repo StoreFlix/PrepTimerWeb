@@ -38,6 +38,19 @@ export class ItemService {
     return this.http.delete(`${this.apiUrl}api/item/${itemId}`);
   }
 
+  // Shared items: the same DELETE hides the item for this company only
+  hideItem(itemId: number): Observable<any> {
+    return this.deleteItem(itemId);
+  }
+
+  getHiddenItems(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}api/item/Hidden`);
+  }
+
+  restoreItem(itemId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}api/item/${itemId}/Restore`, {});
+  }
+
    getItemDetailsById(id:number){
       let url = `${this.apiUrl}api/item/GetItemDetailsById/${id}`;
       return this.http.get<any>(url);

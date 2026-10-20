@@ -56,12 +56,18 @@
 .edit-btn {
     background-color: #ffc107;
     color: black;
-    margin-right: 5px;
 }
 
 .delete-btn {
     background-color: #1A3668;
     color: white;
+}
+
+/* Same space before every row button (view, edit, delete, restore) */
+.action-btn,
+.edit-btn,
+.delete-btn {
+    margin-left: 10px;
 }
 .custom-checkbox {
   margin-left: 0 !important;   /* remove Bootstrap's default indent */
